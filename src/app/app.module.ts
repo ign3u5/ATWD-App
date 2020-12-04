@@ -12,6 +12,7 @@ import { EditorComponent } from './pageElements/editor/editor.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LocalStorageService } from './shared/services/localStorage.service';
+import { AuthenticationService } from './shared/services/authenticationService';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LocalStorageService } from './shared/services/localStorage.service';
   ],
   providers: [
     DataService,
-    LocalStorageService
+    LocalStorageService,
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })

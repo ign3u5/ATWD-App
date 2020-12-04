@@ -18,6 +18,26 @@ export class LocalStorageService
 
     }
 
+    removeCurrentUserData()
+    {
+        localStorage.removeItem("Username");
+        localStorage.removeItem("FirstName");
+        localStorage.removeItem("LastName");
+        localStorage.removeItem("Email");
+        localStorage.removeItem("Token");
+    }
+
+    currentUserIsStored(): boolean
+    {
+        if (localStorage.getItem("Username") &&
+            localStorage.getItem("FirstName") &&
+            localStorage.getItem("LastName") &&
+            localStorage.getItem("Email") &&
+            localStorage.getItem("Token"))
+            return true;
+        return false;
+    }
+
     storeUser(currentUser: User)
     {
         localStorage.setItem("Username", currentUser.username);

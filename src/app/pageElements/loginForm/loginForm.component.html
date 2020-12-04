@@ -1,6 +1,9 @@
+<div (click)="buttonAction()">
+<a >{{ buttonName }}</a>
+</div>
 <div class="modal" id="loginForm" [style.display]="isVisible ? 'block' : 'none'">
     <form [formGroup] = "loginForm" class="modal-content animate" (ngSubmit)="onSubmit()">
-        <span class="close" title="Close Login" (click)="close()">&times;</span>
+        <span class="close" title="Close Login" (click)="isVisible = false">&times;</span>
         <label>
             Username:
             <input type="text" formControlName="username">

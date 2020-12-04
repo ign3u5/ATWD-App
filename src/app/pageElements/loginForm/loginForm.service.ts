@@ -17,9 +17,20 @@ export class LoginService {
         .post<string>(`${this.baseAddress}`, credentials, { observe: 'response'}).pipe(map((response: any) => {
             this.storage.storeToken(response.headers.get('Token'));
             this.storage.storeUser(<User>response.body.data);
-            return <string>response.body.message;
+            console.log(response.body.message);
+            return localStorage.getItem("FirstName");
         }),
         catchError(this.handleError));
+    }
+
+    isLoggedIn()
+    {
+        return this.storage.currentUserIsStored();
+    }
+
+    Logout()
+    {
+        this.storage.removeCurrentUserData();
     }
 
     private handleError(error: HttpErrorResponse) {
