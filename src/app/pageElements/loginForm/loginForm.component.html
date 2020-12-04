@@ -1,0 +1,15 @@
+<div class="modal" id="loginForm" [style.display]="isVisible ? 'block' : 'none'">
+    <form [formGroup] = "loginForm" class="modal-content animate" (ngSubmit)="onSubmit()">
+        <span class="close" title="Close Login" (click)="close()">&times;</span>
+        <label>
+            Username:
+            <input type="text" formControlName="username">
+        </label>
+        <label>
+            Password:
+            <input type="password" formControlName="password">
+        </label>
+        <button type="submit">Login</button>
+    </form>
+</div>
+
