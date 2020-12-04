@@ -1,5 +1,5 @@
 <div class="topnav">
-    <a (click)="activateLogin()">Login</a>
+    <a (click)="activateLogin()">{{ authActionName }}</a>
     <a *ngFor="let p of pages" routerLink="{{ p.link }}" routerLinkActive="active">{{ p.name }}</a>
 </div>
-<login-form [(isVisible)]="loginIsActive"></login-form>
+<login-form [(isVisible)]="loginIsActive" (loggedIn)="loggedIn()"></login-form>

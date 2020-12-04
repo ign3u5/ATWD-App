@@ -15,6 +15,7 @@ export class LoginFormComponent {
     });
     @Input() isVisible: boolean;
     @Output() isVisibleChange = new EventEmitter<boolean>();
+    @Output() loggedIn = new EventEmitter<boolean>();
 
     constructor(private loginService: LoginService)
     {
@@ -30,9 +31,11 @@ export class LoginFormComponent {
     onSubmit()
     {
         console.log("Submitted login information");
-        this.loginService.Login(this.loginForm.value).subscribe(token => {
-            localStorage.setItem("Token", token);
-            alert("You have successfully logged in");
+        this.loginService.Login(this.loginForm.value).subscribe(message => {
+            console.log(message);
+            alert(`Welcome ${localStorage.getItem('FirstName')}, you are now logged in`);
+            this.loggedIn.emit(true);
+            this.close();
         });
     }
 }

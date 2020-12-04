@@ -11,6 +11,7 @@ import { LoginFormComponent } from './pageElements/loginForm/loginForm.component
 import { EditorComponent } from './pageElements/editor/editor.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LocalStorageService } from './shared/services/localStorage.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   providers: [
-    DataService
+    DataService,
+    LocalStorageService
   ],
   bootstrap: [AppComponent]
 })

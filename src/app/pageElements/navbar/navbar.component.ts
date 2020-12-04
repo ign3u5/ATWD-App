@@ -10,6 +10,7 @@ import { Component } from '@angular/core';
 export class NavbarComponent {
     public pages: Pages[];
     public loginIsActive = false;
+    public authActionName = "Login";
     constructor(){
         this.pages = [
             { name: "Contact Us", link: "contactUs"},
@@ -22,6 +23,10 @@ export class NavbarComponent {
     activateLogin()
     {
         this.loginIsActive = true;
+    }
+    loggedIn()
+    {
+        this.authActionName = "Logout";
     }
 }
 class Pages{
