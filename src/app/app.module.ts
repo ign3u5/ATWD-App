@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DataService } from './shared/services/dataService';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './pageElements/navbar/navbar.component';
 import { IndexComponent } from './pages/index/index.component';
@@ -11,8 +10,9 @@ import { LoginFormComponent } from './pageElements/loginForm/loginForm.component
 import { EditorComponent } from './pageElements/editor/editor.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LocalStorageService } from './shared/services/localStorage.service';
 import { AuthenticationService } from './shared/services/authenticationService';
+import { StorageService } from './shared/services/storageService';
+import { HttpDataService } from './shared/services/httpDataService';
 
 @NgModule({
   declarations: [
@@ -32,8 +32,8 @@ import { AuthenticationService } from './shared/services/authenticationService';
     ReactiveFormsModule
   ],
   providers: [
-    DataService,
-    LocalStorageService,
+    HttpDataService,
+    StorageService,
     AuthenticationService
   ],
   bootstrap: [AppComponent]

@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthenticationService } from 'src/app/shared/services/authenticationService';
-import { LocalStorageService } from 'src/app/shared/services/localStorage.service';
 import { LoginService } from './loginForm.service';
 
 @Component({
