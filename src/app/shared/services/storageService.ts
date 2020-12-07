@@ -1,17 +1,10 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
-import { Dexie } from 'dexie';
 
 @Injectable()
 export class StorageService
 {
-    private skylabdb: Dexie
-    constructor() {
-        this.skylabdb = new Dexie('skylabdb');
-        this.skylabdb.version(1).stores({
-            pages: `pageName, contentId, content`
-        });
-    }
+
 
     removeCurrentUserData(): void
     {

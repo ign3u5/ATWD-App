@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationService } from './shared/services/authenticationService';
 import { StorageService } from './shared/services/storageService';
 import { HttpDataService } from './shared/services/httpDataService';
+import { CMSStorageService } from './shared/cms/cmsStorageService';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { HttpDataService } from './shared/services/httpDataService';
   providers: [
     HttpDataService,
     StorageService,
-    AuthenticationService
+    AuthenticationService,
+    CMSStorageService
   ],
   bootstrap: [AppComponent]
 })

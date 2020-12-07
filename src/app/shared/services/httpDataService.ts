@@ -105,6 +105,8 @@ export class HttpDataService {
         );
     }
 
+    
+
     private setTokenHeader(): HttpHeaders {
         return new HttpHeaders({Token: this.storageService.Token});
     }

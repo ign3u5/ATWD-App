@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { CMSStorageService } from 'src/app/shared/cms/cmsStorageService';
 import { AuthenticationService } from 'src/app/shared/services/authenticationService';
 
 @Component({
@@ -6,7 +7,7 @@ import { AuthenticationService } from 'src/app/shared/services/authenticationSer
     templateUrl: './index.component.html'
 })
 export class IndexComponent {
-    constructor(private authenticationService: AuthenticationService)
+    constructor(private authenticationService: AuthenticationService, private cmsService: CMSStorageService)
     {
 
     }
@@ -15,6 +16,6 @@ export class IndexComponent {
     }
 test()
 {
-    localStorage.removeItem("Username");
+   this.cmsService.test();
 }
 }
