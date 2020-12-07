@@ -16,6 +16,6 @@ export class IndexComponent {
     }
 test()
 {
-   this.cmsService.test();
+   this.cmsService.loadPage("aboutUs").subscribe((value) => console.log(value));
 }
 }

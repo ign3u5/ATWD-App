@@ -2,6 +2,8 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { CMSStorageService } from '../cms/cmsStorageService';
+import { PageData } from '../cms/models/pageData';
 import { Credentials } from '../models/credentials';
 import { User } from '../models/user';
 import { StorageService } from './storageService';
@@ -105,6 +107,33 @@ export class HttpDataService {
         );
     }
 
+    getPage(pageName: string): Observable<PageData>
+    {
+        return this.client
+        .get<PageData>(`${this.baseAddress}cms.php`, 
+        {headers: this.setTokenHeader(), observe: 'response', params: this.setParamsWithPageName(pageName)})
+        .pipe(
+            map((response: any) => {
+                this.storageService.Token = response.headers.get('Token');
+                return response.body.data as PageData;
+            }),
+            catchError(this.handleError)
+        );
+    }
+
+    updatePage(pageData: PageData): Observable<void>
+    {
+        return this.client
+        .put(`${this.baseAddress}cms.php`, pageData, {headers: this.setTokenHeader(), observe: 'response'})
+        .pipe(
+            map((response: any) => {
+                this.storageService.Token = response.headers.get('Token');
+                console.log(response.body.message);
+            }),
+            catchError(this.handleError)
+        );
+    }
+
     
 
     private setTokenHeader(): HttpHeaders {
@@ -114,6 +143,11 @@ export class HttpDataService {
     private setParamsWithUsername(username: string): HttpParams {
         let httpParams = new HttpParams();
         httpParams = httpParams.append('username', username);
+        return httpParams;
+    }
+    private setParamsWithPageName(pageName: string): HttpParams {
+        let httpParams = new HttpParams();
+        httpParams = httpParams.append('pageName', pageName);
         return httpParams;
     }
 
