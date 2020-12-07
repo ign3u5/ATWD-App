@@ -19,6 +19,7 @@ export class StorageService
         localStorage.removeItem('FirstName');
         localStorage.removeItem('LastName');
         localStorage.removeItem('Email');
+        localStorage.removeItem('PrivilegeLevel');
         localStorage.removeItem('Token');
     }
 
@@ -28,6 +29,7 @@ export class StorageService
             localStorage.getItem('FirstName') &&
             localStorage.getItem('LastName') &&
             localStorage.getItem('Email') &&
+            localStorage.getItem('PrivilegeLevel') &&
             localStorage.getItem('Token')) {
             return true;
         }

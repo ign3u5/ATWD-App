@@ -116,6 +116,7 @@ export class HttpDataService {
     }
 
     private handleError(error: HttpErrorResponse): Observable<never> {
+        alert(`${error.error.message}`);
         console.error(`Login error: ${error.error.message}`);
         return throwError('An error occurred');
     }

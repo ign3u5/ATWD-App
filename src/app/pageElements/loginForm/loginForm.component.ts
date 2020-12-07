@@ -1,13 +1,13 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthenticationService } from 'src/app/shared/services/authenticationService';
-import { LoginService } from './loginForm.service';
+import { HttpDataService } from 'src/app/shared/services/httpDataService';
+import { StorageService } from 'src/app/shared/services/storageService';
 
 @Component({
     selector: 'login-form',
     templateUrl: './loginForm.component.html',
-    styleUrls: ['./loginForm.component.scss', '../navbar/navbar.component.scss'],
-    providers: [LoginService]
+    styleUrls: ['./loginForm.component.scss', '../navbar/navbar.component.scss']
 })
 export class LoginFormComponent{
     loginForm = new FormGroup({
@@ -17,7 +17,7 @@ export class LoginFormComponent{
     public isVisible = false;
     public buttonName: string;
     public buttonAction: () => void;
-    constructor(private loginService: LoginService, private storage: LocalStorageService, private authenticationService: AuthenticationService)
+    constructor(private client: HttpDataService, private storage: StorageService)
     {
         if (this.storage.currentUserIsStored())
             this.setToLoggedInState();
@@ -33,7 +33,6 @@ export class LoginFormComponent{
             this.storage.removeCurrentUserData();
             this.setToLoggedOutState();
         }
-        this.authenticationService.toggleAuthorisation();
     }
 
     setToLoggedOutState()
@@ -42,7 +41,6 @@ export class LoginFormComponent{
         this.buttonAction = () => {
             this.isVisible = true;
         }
-        this.authenticationService.toggleAuthorisation();
     }
 
     close()
@@ -53,8 +51,8 @@ export class LoginFormComponent{
     onSubmit()
     {
         console.log("Submitted login information");
-        this.loginService.Login(this.loginForm.value).subscribe(firstName => {
-            alert(`Welcome ${firstName}, you are now logged in`);
+        this.client.login(this.loginForm.value).subscribe(() => {
+            alert(`Welcome ${this.storage.CurrentUser.firstName}, you are now logged in`);
             this.close();
             this.setToLoggedInState();
         });
