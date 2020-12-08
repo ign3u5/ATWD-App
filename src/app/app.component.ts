@@ -6,14 +6,10 @@ import { CMSStorageService } from './shared/cms/cmsStorageService';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'frontend';
   constructor(private cmsService: CMSStorageService)
   {
 
-  }
-  ngOnInit()
-  {
-    this.cmsService.loadPages().subscribe(() => console.log("Pages have been loaded"));
   }
 }

@@ -23,13 +23,8 @@ export class EditorComponent implements OnInit{
     ngOnInit()
     {
         console.log("init editor");
-        this.cmsService.getContent(this.pageName, this.editorId).subscribe(content => this.content = content);
-        
     }
 
-    get indicator(): string{
-        return this.cmsService.indicator;
-    }
     
     public save()
     {

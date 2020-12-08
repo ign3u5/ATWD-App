@@ -126,7 +126,11 @@ export class HttpDataService {
         .pipe(
             map((response: any) => {
                 this.storageService.Token = response.headers.get('Token');
-                return response.body.data as PageData;
+                let pageData: PageData = [] as any;
+                response.body.data.pageContents.forEach(pageContents => {
+                    pageData[response.body.data.pageName] = {[pageContents.contentId]: pageContents.content};
+                });
+                return pageData as PageData;
             }),
             catchError(this.handleError)
         );
