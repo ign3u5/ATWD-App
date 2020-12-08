@@ -11,8 +11,9 @@ export class IndexComponent {
 
     public rightEditorContent: string;
     public leftEditorContent: string;
-    constructor(private authenticationService: AuthenticationService, private cmsService: CMSStorageService)
+    constructor()
     {
+
     }
     get isAuthorised(): string {
         return localStorage.getItem("FirstName");

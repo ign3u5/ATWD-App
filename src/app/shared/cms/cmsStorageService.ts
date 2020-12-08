@@ -1,5 +1,4 @@
 import { Collection, Dexie } from 'dexie';
-import "dexie-observable";
 import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { PageData } from './models/pageData';
 import { PageContent } from './models/pageContent';
@@ -22,11 +21,7 @@ export class CMSStorageService
         this.dbName = "skylabdb";
         this.createDb();
         this.defineDbSchema();
-        this.db.on("changes", (changes) => {
-            changes.forEach(change => {
-                alert(change.type);
-            });
-        });
+
     }
 
     private createDb()
@@ -45,14 +40,9 @@ export class CMSStorageService
     {
         return this.client.getAllPages()
         .pipe(
-            map(pages => 
-                pages.forEach(page => 
-                    this.addPageData(page))
-                ),
-            map(() => this.readAllPageData())
-        ).pipe(
-            switchMap(value => value)
-        ).pipe(
+            switchMap(pages => 
+                this.addPageData(pages)),
+            switchMap(() => this.readAllPageData()),
             map(() => {
                 console.log("Pages finished adding to memory");
                 this.loadedPages.next(this.pages);
@@ -60,17 +50,19 @@ export class CMSStorageService
         )
     }
     
-    private addPageData(page: PageDataContent): Observable<void>
+    private addPageData(pages: PageDataContent[]): Observable<void>
     {
+        console.log(`Adding page data to database from http client. Page: ${JSON.stringify(pages)}`);
         return from(this.db.pages
-            .add({pageName: page.pageName, contentId: page.contentId, content: page.content})
-            .catch('ConstraintError', (_error) => {
-                console.log("Attempted to add a value that already exists");
+            .bulkAdd(pages)
+            .catch('BulkError', err => {
+                err.failures.forEach(failure => console.log(`${failure.message}`))
             }) as Promise<void>);
     }
 
     private readAllPageData(): Observable<void>
     {
+        console.log("Started loading page data to memory from database");
         return from(this.db.pages.each(page => {
             this.pages.push({
                 pageName: page.pageName,
@@ -78,7 +70,6 @@ export class CMSStorageService
                 content: page.content
             });
             console.log(`${page.pageName}, contentId: ${page.contentId} added to memory`);
-
         }) as Promise<void>);
     }
 
@@ -87,6 +78,7 @@ export class CMSStorageService
         return this.loadedPages.pipe(
             map(() =>
             {  
+                console.log(`Attempting to read page information (pageName: ${pageName}, contentId: ${contentId}) from ${JSON.stringify(this.pages)}`);
                 return this.pages.find(page => page.pageName == pageName && page.contentId == contentId).content
             }));
     }
