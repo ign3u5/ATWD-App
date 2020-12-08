@@ -26,6 +26,10 @@ export class EditorComponent implements OnInit{
         this.cmsService.getContent(this.pageName, this.editorId).subscribe(content => this.content = content);
         
     }
+
+    get indicator(): string{
+        return this.cmsService.indicator;
+    }
     
     public save()
     {

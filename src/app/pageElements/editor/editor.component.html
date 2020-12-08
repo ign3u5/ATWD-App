@@ -14,5 +14,5 @@
         contextmenu: 'undo redo | inserttable | cell row column deletable | help'
     }"
 ></editor>
-<button *ngIf="isEditor" (click)="save()">Save changes</button>
+<button *ngIf="isEditor" (click)="save()">Save changes {{ indicator }} </button>
 

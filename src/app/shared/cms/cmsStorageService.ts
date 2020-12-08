@@ -15,6 +15,7 @@ export class CMSStorageService
     private dbName: string;
     public pages: PageDataContent[] = [{pageName: "aboutUs", contentId: 3, content: "Bing"}];
     public loadedPages: Subject<PageDataContent[]> = new Subject<PageDataContent[]>();
+    public indicator = "nope";
 
     public constructor(private client: HttpDataService)
     {
@@ -73,12 +74,19 @@ export class CMSStorageService
         }) as Promise<void>);
     }
 
+    // public getContent(pageName: string, contentId: number): string
+    // {
+    //     console.log("Attempting to get content");
+    //     return this.pages.find(page => page.pageName == pageName && page.contentId == contentId).content
+    // }
     public getContent(pageName: string, contentId: number): Observable<string>
     {
+        console.log("Attempting to get content");
         return this.loadedPages.pipe(
             map(() =>
             {  
                 console.log(`Attempting to read page information (pageName: ${pageName}, contentId: ${contentId}) from ${JSON.stringify(this.pages)}`);
+                this.indicator = "hello";
                 return this.pages.find(page => page.pageName == pageName && page.contentId == contentId).content
             }));
     }
