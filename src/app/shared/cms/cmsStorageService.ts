@@ -3,7 +3,7 @@ import "dexie-observable";
 import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { PageData } from './models/pageData';
 import { PageContent } from './models/pageContent';
-import { from, observable, Observable } from 'rxjs';
+import { from, observable, Observable, Subject } from 'rxjs';
 import { HttpDataService } from '../services/httpDataService';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { PageDataContent } from './models/pageDataContent';
@@ -14,7 +14,8 @@ export class CMSStorageService
 {
     private db: any;
     private dbName: string;
-    public pages: PageData;
+    public pages: PageDataContent[] = [{pageName: "aboutUs", contentId: 3, content: "Bing"}];
+    public loadedPages: Subject<PageDataContent[]> = new Subject<PageDataContent[]>();
 
     public constructor(private client: HttpDataService)
     {
@@ -48,13 +49,15 @@ export class CMSStorageService
                 pages.forEach(page => 
                     this.addPageData(page))
                 ),
-            map(() => this.getPageNames()),
-            map(pageNames => {
-                for (var pageName in pageNames)
-                {
-                    this.readPageData(pageName);
-                }
-            }))
+            map(() => this.readAllPageData())
+        ).pipe(
+            switchMap(value => value)
+        ).pipe(
+            map(() => {
+                console.log("Pages finished adding to memory");
+                this.loadedPages.next(this.pages);
+            })
+        )
     }
     
     private addPageData(page: PageDataContent): Observable<void>
@@ -66,29 +69,30 @@ export class CMSStorageService
             }) as Promise<void>);
     }
 
-    private getPageNames(): Observable<string[]>
+    private readAllPageData(): Observable<void>
     {
-        return from(this.db.pages.orderBy("pageName").distinct().toArray() as Promise<string[]>);
-    }
+        return from(this.db.pages.each(page => {
+            this.pages.push({
+                pageName: page.pageName,
+                contentId: page.contentId,
+                content: page.content
+            });
+            console.log(`${page.pageName}, contentId: ${page.contentId} added to memory`);
 
-    private readPageData(pageName: string): Observable<void>
-    {
-        return from(this.db.pages.where("[pageName+contentId]").between([pageName, Dexie.minKey], [pageName, Dexie.maxKey]).each((pageData) => {
-            this.pages[pageName][pageData.contentId] = pageData.content;
         }) as Promise<void>);
     }
 
-    /*
-    public loadPage(pageName: string): Observable<string>
+    public getContent(pageName: string, contentId: number): Observable<string>
     {
-        return this.client.getPage(pageName)
-        .pipe(
-            map((pageData) => {
-                pageData.pageContents.forEach(pageContent => this.addPageData(pageName, pageContent.contentId, pageContent.content));
-            }),
-            map(() => this.readPageData(pageName))
-        ).pipe(
-            switchMap(value => value)
-        );
-    }*/
+        return this.loadedPages.pipe(
+            map(() =>
+            {  
+                return this.pages.find(page => page.pageName == pageName && page.contentId == contentId).content
+            }));
+    }
+
+    public updateContent(pageName: string, contentId: number, content: string): void
+    {
+        
+    }
 }

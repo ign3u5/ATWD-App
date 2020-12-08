@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CMSStorageService } from 'src/app/shared/cms/cmsStorageService';
 
 @Component({
 	selector: 'editorc',
@@ -7,17 +8,24 @@ import { Component, Input } from '@angular/core';
         './editor.component.scss'
     ]
 })
-export class EditorComponent{
+export class EditorComponent implements OnInit{
     public isEditor: boolean;
     public apiKey: string;
-    content: string;
-    @Input() editorId: string;
-    @Input() initialValue: string;
-    constructor() {
+
+    @Input() pageName: string;
+    @Input() editorId: number;
+    @Input() content: string;
+
+    constructor(private cmsService: CMSStorageService) {
         this.apiKey = "t3yjki3k9abk4gc0ghgkc0yzuxr8cgm80mefx3uh1ps0u7fd";
         this.isEditor = true;
-        this.content = "<p>Hello!</p>";
     }
+
+    ngOnInit()
+    {
+        this.cmsService.getContent(this.pageName, this.editorId).subscribe(content => this.content = content);
+    }
+    
     public save()
     {
         console.log(this.content);
