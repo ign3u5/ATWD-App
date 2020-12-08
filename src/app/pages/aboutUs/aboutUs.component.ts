@@ -5,14 +5,11 @@ import { CMSStorageService } from 'src/app/shared/cms/cmsStorageService';
     selector: 'aboutUs',
     templateUrl: './aboutUs.component.html'
 })
-export class AboutUsComponent implements OnInit {
+export class AboutUsComponent{
 
     constructor(private cmsService: CMSStorageService)
     {
 
     }
-    ngOnInit()
-    {
-        this.cmsService.loadPage("aboutUs").subscribe((content) => console.log(content));
-    }
+
 }

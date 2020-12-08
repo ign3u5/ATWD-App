@@ -9,13 +9,12 @@ import { AuthenticationService } from 'src/app/shared/services/authenticationSer
 export class IndexComponent {
     constructor(private authenticationService: AuthenticationService, private cmsService: CMSStorageService)
     {
-
     }
     get isAuthorised(): string {
         return localStorage.getItem("FirstName");
     }
 test()
 {
-   this.cmsService.loadPage("aboutUs").subscribe((value) => console.log(value));
+    alert(this.cmsService.pages["aboutUs"][1]);
 }
 }

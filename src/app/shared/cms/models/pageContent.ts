@@ -1,5 +1,4 @@
 export interface PageContent
 {
-    contentId: number;
-    content: string;
+    [contentId: number]: string;
 }

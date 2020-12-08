@@ -2,8 +2,8 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { CMSStorageService } from '../cms/cmsStorageService';
 import { PageData } from '../cms/models/pageData';
+import { PageDataContent } from '../cms/models/pageDataContent';
 import { Credentials } from '../models/credentials';
 import { User } from '../models/user';
 import { StorageService } from './storageService';
@@ -107,11 +107,22 @@ export class HttpDataService {
         );
     }
 
+    getAllPages(): Observable<PageDataContent[]>
+    {
+        return this.client
+        .get<PageDataContent[]>(`${this.baseAddress}cms.php`)
+        .pipe(
+            map((responseBody: any) => {
+                return responseBody.data as PageDataContent[];
+            })
+        )
+    }
+
     getPage(pageName: string): Observable<PageData>
     {
         return this.client
         .get<PageData>(`${this.baseAddress}cms.php`, 
-        {headers: this.setTokenHeader(), observe: 'response', params: this.setParamsWithPageName(pageName)})
+        {observe: 'response', params: this.setParamsWithPageName(pageName)})
         .pipe(
             map((response: any) => {
                 this.storageService.Token = response.headers.get('Token');
