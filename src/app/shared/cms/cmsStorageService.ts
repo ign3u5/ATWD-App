@@ -19,11 +19,22 @@ export class CMSStorageService
 
     public loadPage(pageName: string)
     {
-        return this.client.getPage(pageName).pipe(
-            map(page => {
-                this.pageData[pageName] = page[pageName];
-                console.log(`The following content for ${pageName} is beeing added to memory: ${JSON.stringify(page[pageName])}`);
-            })
-        )
+        if (this.pageData[pageName])
+        {
+            console.log(`Memory contains page data for ${pageName}.`);
+            return new Observable<string>(observer => 
+                observer.next(pageName));
+        }
+        else
+        {
+            console.log(`Memory does not contain page data for ${pageName}, setting page name observable to wait for API to return data to memory.`);
+            return this.client.getPage(pageName).pipe(
+                map(page => {
+                    this.pageData[pageName] = page[pageName];
+                    console.log(`The following content for ${pageName} is being added to memory: ${JSON.stringify(page[pageName])}`);
+                    return pageName;
+                })
+            )
+        }
     }
 }

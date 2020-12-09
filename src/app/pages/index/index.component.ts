@@ -11,25 +11,10 @@ import { AuthenticationService } from 'src/app/shared/services/authenticationSer
     templateUrl: './index.component.html'
 })
 export class IndexComponent {
-    private pageName = "aboutUs";
-    public pageName$: Observable<string>;
-    public editorPageName: string;
+    public pageName: string;
 
     constructor(private cmsService: CMSStorageService){
-        if (this.cmsService.pageData[this.pageName])
-        {
-            console.log("Memory contains page data, pulling content from there");
-            this.pageName$ = new Observable<string>(observer => 
-                observer.next(this.pageName));
-        }
-        else
-        {
-            console.log("Memory does not contain page data, setting page name observable to wait for API to return data to memory.");
-            this.pageName$ = this.cmsService.loadPage(this.pageName).pipe(
-                map(() => this.pageName)
-            );
-        }
-        this.pageName$.subscribe(pageName => this.editorPageName = pageName);
+        this.cmsService.loadPage("aboutUs").subscribe(pageName => this.pageName = pageName);
     }
 
     get isAuthorised(): string {
