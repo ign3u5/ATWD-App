@@ -17,5 +17,13 @@ export class CMSStorageService
         this.pageData = [] as any;
     }
 
-    
+    public loadPage(pageName: string)
+    {
+        return this.client.getPage(pageName).pipe(
+            map(page => {
+                this.pageData[pageName] = page[pageName];
+                console.log(`Page data being added to memory: ${JSON.stringify(page[pageName])}`);
+            })
+        )
+    }
 }

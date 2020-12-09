@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { PageContent } from '../cms/models/pageContent';
 import { PageData } from '../cms/models/pageData';
 import { PageDataContent } from '../cms/models/pageDataContent';
 import { Credentials } from '../models/credentials';
@@ -127,9 +128,12 @@ export class HttpDataService {
             map((response: any) => {
                 this.storageService.Token = response.headers.get('Token');
                 let pageData: PageData = [] as any;
+                let pageContent: PageContent = [] as any;
                 response.body.data.pageContents.forEach(pageContents => {
-                    pageData[response.body.data.pageName] = {[pageContents.contentId]: pageContents.content};
+                    pageContent[pageContents.contentId] = pageContents.content;
                 });
+                pageData[response.body.data.pageName] = pageContent;
+                console.log(`Returning page data from API call: ${JSON.stringify(response.body.data)}`);
                 return pageData as PageData;
             }),
             catchError(this.handleError)
