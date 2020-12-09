@@ -1,10 +1,10 @@
 <h1>Home Page</h1>
 <div class="row">
     <div class="col-6">
-        <editorc pageName="aboutUs" editorId="1" ></editorc>
+        <editorc [pageName]="editorPageName" editorId="1" ></editorc>
     </div>
     <div class="col-6">
-        <editorc pageName="aboutUs" editorId="2" ></editorc>
+        <editorc [pageName]="editorPageName" editorId="2" ></editorc>
     </div>
     <button (click)="test()">Test</button>
 </div>

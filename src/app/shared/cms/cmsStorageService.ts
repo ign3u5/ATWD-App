@@ -22,7 +22,7 @@ export class CMSStorageService
         return this.client.getPage(pageName).pipe(
             map(page => {
                 this.pageData[pageName] = page[pageName];
-                console.log(`Page data being added to memory: ${JSON.stringify(page[pageName])}`);
+                console.log(`The following content for ${pageName} is beeing added to memory: ${JSON.stringify(page[pageName])}`);
             })
         )
     }

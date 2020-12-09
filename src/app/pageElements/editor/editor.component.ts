@@ -10,7 +10,7 @@ import { CMSStorageService } from 'src/app/shared/cms/cmsStorageService';
         './editor.component.scss'
     ]
 })
-export class EditorComponent implements OnInit{
+export class EditorComponent implements OnChanges{
     public isEditor: boolean;
     public apiKey: string;
     public content: string;
@@ -24,28 +24,16 @@ export class EditorComponent implements OnInit{
         this.isEditor = true;
 
     }
-    ngOnInit()
+    ngOnChanges()
     {
         if (this.cmsService.pageData[this.pageName])
         {
-            console.log("Memory contains page data, pulling content from there");
-            this.content$ = new Observable<string>(observer => 
-                observer.next(this.cmsService.pageData[this.pageName][this.editorId]));
-            this.content$.subscribe((value) => console.log("After"));
+            this.content = this.cmsService.pageData[this.pageName][this.editorId];
         }
-        else
+        else if(this.pageName)
         {
-            console.log("Memory does not contain page data, setting content observable to call get page");
-            this.content$ = this.cmsService.loadPage(this.pageName).pipe(
-                map(() => {
-                    console.log(`Page content: ${JSON.stringify(this.cmsService.pageData)}`);
-                    return this.cmsService.pageData[this.pageName][this.editorId]})
-            );
+            console.error(`Failed to load page data from memory in editor component. Check that content for ${this.editorId} is being set in ${this.pageName} component`);
         }
-        this.content$.subscribe(content => {
-            console.log(`Content is being set to ${content}`);
-            this.content = content});
-        console.log("init editor");
     }
 
     
