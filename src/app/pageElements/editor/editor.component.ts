@@ -36,8 +36,11 @@ export class EditorComponent implements OnChanges{
         }
     }
 
-    
-    public save()
+    updateContent()
     {
+        if (this.isEditor)
+        {
+            this.cmsService.pageData[this.pageName][this.editorId] = this.content;
+        }
     }
  }

@@ -4,8 +4,8 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { PageContent } from '../cms/models/pageContent';
 import { PageData } from '../cms/models/pageData';
-import { PageDataContent } from '../cms/models/pageDataContent';
 import { Credentials } from '../models/credentials';
+import { PageDataResponse } from '../models/pageDataResponse';
 import { User } from '../models/user';
 import { StorageService } from './storageService';
 
@@ -108,17 +108,6 @@ export class HttpDataService {
         );
     }
 
-    getAllPages(): Observable<PageDataContent[]>
-    {
-        return this.client
-        .get<PageDataContent[]>(`${this.baseAddress}cms.php`)
-        .pipe(
-            map((responseBody: any) => {
-                return responseBody.data as PageDataContent[];
-            })
-        )
-    }
-
     getPage(pageName: string): Observable<PageData>
     {
         return this.client
@@ -126,7 +115,6 @@ export class HttpDataService {
         {observe: 'response', params: this.setParamsWithPageName(pageName)})
         .pipe(
             map((response: any) => {
-                this.storageService.Token = response.headers.get('Token');
                 let pageData: PageData = [] as any;
                 let pageContent: PageContent = [] as any;
                 response.body.data.pageContents.forEach(pageContents => {
@@ -140,10 +128,10 @@ export class HttpDataService {
         );
     }
 
-    updatePage(pageData: PageData): Observable<void>
+    updatePage(pageDataResponse: PageDataResponse): Observable<void>
     {
         return this.client
-        .put(`${this.baseAddress}cms.php`, pageData, {headers: this.setTokenHeader(), observe: 'response'})
+        .put(`${this.baseAddress}cms.php`, pageDataResponse, {headers: this.setTokenHeader(), observe: 'response'})
         .pipe(
             map((response: any) => {
                 this.storageService.Token = response.headers.get('Token');

@@ -8,8 +8,5 @@ import { CMSStorageService } from './shared/cms/cmsStorageService';
 })
 export class AppComponent {
   title = 'frontend';
-  constructor(private cmsService: CMSStorageService)
-  {
 
-  }
 }

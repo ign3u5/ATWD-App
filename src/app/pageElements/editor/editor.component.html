@@ -4,6 +4,7 @@
     [apiKey]="apiKey" 
     toolbar= "false"
     [(ngModel)]="content"
+    (ngModelChange)="updateContent()"
     plugins="quickbars advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table paste help wordcount codesample"
     [inline] = "true" 
     [init] = "{
@@ -14,5 +15,4 @@
         contextmenu: 'undo redo | inserttable | cell row column deletable | help'
     }"
 ></editor>
-<button *ngIf="isEditor" (click)="save()">Save changes</button>
 

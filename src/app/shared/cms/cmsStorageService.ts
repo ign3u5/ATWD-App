@@ -1,11 +1,11 @@
-import { Collection, Dexie } from 'dexie';
 import { Injectable } from '@angular/core';
 import { PageData } from './models/pageData';
-import { PageContent } from './models/pageContent';
-import { from, observable, Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpDataService } from '../services/httpDataService';
-import { map, switchMap, tap } from 'rxjs/operators';
-import { PageDataContent } from './models/pageDataContent';
+import { map } from 'rxjs/operators';
+import { PageDataResponse } from '../models/pageDataResponse';
+import { PageContentsResponse } from '../models/pageContentResponse';
+
 
 
 @Injectable()
@@ -17,7 +17,7 @@ export class CMSStorageService
         this.pageData = [] as any;
     }
 
-    public loadPage(pageName: string)
+    public loadPage(pageName: string): Observable<string>
     {
         if (this.pageData[pageName])
         {
@@ -35,6 +35,29 @@ export class CMSStorageService
                     return pageName;
                 })
             )
+        }
+    }
+
+    public updatePage(pageName: string): Observable<void>
+    {
+        console.log("Updated page was called, CMS Storage Service");
+        if (this.pageData[pageName])
+        {
+            let updatedPageData: PageDataResponse = {pageName: pageName, pageContents: []}
+            for (let pageContent in this.pageData[pageName])
+            {
+                let updatedPageContents: PageContentsResponse = {
+                    contentId: pageContent,
+                    content: this.pageData[pageName][pageContent]
+                }
+                updatedPageData.pageContents.push(updatedPageContents);
+            }
+            return this.client.updatePage(updatedPageData).pipe(map(() => console.log("Page successfully updated")));
+        }
+        else
+        {
+            console.error("Page data has not yet been loaded");
+            return new Observable(observer => observer.next());
         }
     }
 }

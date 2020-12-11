@@ -1,1 +1,16 @@
 <h1>About Us</h1>
+<button (click)="saveChanges()">Save Changes
+    <span [class]="popupClass">
+        <span class="closebtn" (click)="popupClass = 'popup'">&times;</span>
+        The content has been saved</span>
+</button>
+<div class="row">
+    <div class="col-6">
+        <editorc [pageName]="pageName" editorId="1" ></editorc>
+    </div>
+    <div class="col-6">
+        <editorc [pageName]="pageName" editorId="2" ></editorc>
+    </div>
+    <button (click)="test()">Test
+    </button>
+</div>
