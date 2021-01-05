@@ -19,6 +19,7 @@ import { ServicesComponent } from './pages/services/services.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { ContactUsComponent } from './pages/contactUs/contactUs.component';
 import { PopUpButtonComponent } from './pageElements/pop-up-button/pop-up-button.component';
+import { SlideshowGalleryComponent } from './pageElements/slideshow-gallery/slideshow-gallery.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { PopUpButtonComponent } from './pageElements/pop-up-button/pop-up-button
     LoginFormComponent,
     NavbarComponent,
     EditorComponent,
-    PopUpButtonComponent
+    PopUpButtonComponent,
+    SlideshowGalleryComponent
   ],
   imports: [
     BrowserModule,

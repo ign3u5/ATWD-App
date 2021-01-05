@@ -1,0 +1,22 @@
+<!-- Container for the image gallery -->
+<div class="container">
+
+    <div class="numbertext">{{currentSlide}} / {{imageSrcs.length}}</div>
+    <img [src]="imageSrcs[currentSlide - 1]" style="width:100%">
+  
+  <!-- Next and previous buttons -->
+  <a class="prev" (click)="plusSlide(-1)">&#10094;</a>
+  <a class="next" (click)="plusSlide(1)">&#10095;</a>
+
+  <!-- Image text -->
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <!-- Thumbnail images -->
+  <div class="row">
+    <div *ngFor="let src of imageSrcs; index as i" class="column">
+      <img class="demo cursor" [src]="src" style="width:100%" (click)="showSlide(i)">
+    </div> 
+  </div>
+</div>
