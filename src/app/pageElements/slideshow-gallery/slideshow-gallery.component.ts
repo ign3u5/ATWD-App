@@ -9,7 +9,6 @@ export class SlideshowGalleryComponent implements OnInit {
 
   imageSrcs = ['https://api.ws311471.remote.ac/images/bear.jpg',
 'https://api.ws311471.remote.ac/images/blue_lake_man.jpg',
-'https://api.ws311471.remote.ac/images/desk.jpg',
 'https://api.ws311471.remote.ac/images/finding_us.jpg',
 'https://api.ws311471.remote.ac/images/girl_woods.jpg',
 'https://api.ws311471.remote.ac/images/phone_photo.jpg'];

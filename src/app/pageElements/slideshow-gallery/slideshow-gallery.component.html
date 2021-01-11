@@ -16,7 +16,7 @@
   <!-- Thumbnail images -->
   <div class="row">
     <div *ngFor="let src of imageSrcs; index as i" class="column">
-      <img class="demo cursor" [src]="src" style="width:100%" (click)="showSlide(i)">
+      <img [ngClass]="{'demo cursor': true, 'active': currentSlide - 1 == i}" [src]="src" style="width:100%" (click)="showSlide(i)">
     </div> 
   </div>
 </div>

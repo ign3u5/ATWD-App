@@ -20,6 +20,7 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
 import { ContactUsComponent } from './pages/contactUs/contactUs.component';
 import { PopUpButtonComponent } from './pageElements/pop-up-button/pop-up-button.component';
 import { SlideshowGalleryComponent } from './pageElements/slideshow-gallery/slideshow-gallery.component';
+import { EditorCardComponent } from './pageElements/editor-card/editor-card.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { SlideshowGalleryComponent } from './pageElements/slideshow-gallery/slid
     NavbarComponent,
     EditorComponent,
     PopUpButtonComponent,
-    SlideshowGalleryComponent
+    SlideshowGalleryComponent,
+    EditorCardComponent
   ],
   imports: [
     BrowserModule,

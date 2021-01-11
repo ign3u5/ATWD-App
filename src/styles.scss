@@ -6,12 +6,34 @@
   box-sizing: border-box;
 }
 
+.hl {
+  border-bottom: 2px solid black;
+}
+
+.mt-3 {
+  margin-top: 3vh;
+}
+
+.mt-4 {
+  margin-top: 4vh;
+}
+
+.mt-5 {
+  margin-top: 5vh;
+}
+
+.fp-height {
+  height: 100vh;
+}
+
 .row{
     &::after {
     content: "";
     clear: both;
     display: table;
   }
+
+
 
   [class*="col-"] {
     float: left;
@@ -37,6 +59,7 @@
     }
     .col-s-4 {
       width: 33.33%;
+
     }
     .col-s-5 {
       width: 41.66%;

@@ -1,9 +1,12 @@
 .backgroundImage {
-    background-image: url("shared/images/blue_lake_man.jpg");
+    background-image: url("shared/images/blue_lake_man_background.jpg");
     background-position:center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    background-attachment: fixed;
+    height: 100%;
     padding-left: 1vw;
     padding-right: 1vw;
+    padding-bottom: 1vw;
+
 }
