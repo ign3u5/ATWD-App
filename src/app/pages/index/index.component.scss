@@ -1,8 +1,27 @@
-[class*="col-"] {
-    text-align: center;
+.gallery {
+    grid-area: gallery;
 }
 
-editor-card {
-    width: 70%;
-    display: inline-block;
+.card1 {
+    grid-area: card1;
+}
+
+.card2 {
+    grid-area: card2;
+}
+
+.card3 {
+    grid-area: card3;
+}
+
+.container {
+    min-height: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 100vh 90vh;
+    grid-template-areas:
+        ". . . gallery gallery gallery gallery gallery gallery . . ."
+        "card1 card1 card1 card1 card2 card2 card2 card2 card3 card3 card3 card3";
+    column-gap: 3vw;
+    row-gap: 3vh;
 }
