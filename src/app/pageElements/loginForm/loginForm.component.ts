@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from "@angular/core";
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthenticationService } from 'src/app/shared/services/authenticationService';
 import { HttpDataService } from 'src/app/shared/services/httpDataService';
 import { StorageService } from 'src/app/shared/services/storageService';
+import { TokenServiceService } from "src/app/shared/services/token-service/token-service.service";
 
 @Component({
     selector: 'login-form',
@@ -17,12 +18,16 @@ export class LoginFormComponent{
     public isVisible = false;
     public buttonName: string;
     public buttonAction: () => void;
-    constructor(private client: HttpDataService, private storage: StorageService)
+    constructor(private client: HttpDataService, private storage: StorageService, private tokenService: TokenServiceService)
     {
-        if (this.storage.currentUserIsStored())
+        if (tokenService.TokenIsValid)
+        {
             this.setToLoggedInState();
+        }
         else
+        {
             this.setToLoggedOutState();
+        }
     }
 
     setToLoggedInState()

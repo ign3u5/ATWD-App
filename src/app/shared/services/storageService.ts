@@ -4,8 +4,6 @@ import { User } from '../models/user';
 @Injectable()
 export class StorageService
 {
-
-
     removeCurrentUserData(): void
     {
         localStorage.removeItem('Username');
@@ -14,6 +12,7 @@ export class StorageService
         localStorage.removeItem('Email');
         localStorage.removeItem('PrivilegeLevel');
         localStorage.removeItem('Token');
+        console.log("Any locally stored user data has been cleared");
     }
 
     currentUserIsStored(): boolean
@@ -54,5 +53,6 @@ export class StorageService
     get Token(): string
     {
         return localStorage.getItem('Token');
+
     }
 }

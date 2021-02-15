@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CMSStorageService } from './shared/cms/cmsStorageService';
+import { TokenServiceService } from './shared/services/token-service/token-service.service';
 
 @Component({
   selector: 'app-root',
