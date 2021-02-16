@@ -1,6 +1,4 @@
-.gallery {
-    grid-area: gallery;
-}
+
 
 .card1 {
     grid-area: card1;
@@ -14,20 +12,43 @@
     grid-area: card3;
 }
 
-.pageName {
-    text-align: center;
-    grid-area: pageName;
-}
+
 
 .container {
     min-height: 100%;
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: auto 100vh 90vh;
-    grid-template-areas:
-        ". . . . pageName pageName pageName pageName . . . ."
-        ". . . gallery gallery gallery gallery gallery gallery . . ."
-        "card1 card1 card1 card1 card2 card2 card2 card2 card3 card3 card3 card3";
+    grid-template: 
+    ". pageName ."
+    ". gallery ."
+    "secondPage secondPage secondPage"/auto auto auto;
     column-gap: 3vw;
     row-gap: 3vh;
+
+    .pageName {
+        text-align: center;
+        grid-area: pageName;
+    }
+
+    .gallery {
+        grid-area: gallery;
+    }
+
+    .secondPage {
+        grid-area: secondPage;
+        display: grid;
+        column-gap: 3vw;
+        grid-template: 
+        "card1 card2 card3";
+        .card1 {
+            grid-area: card1;
+        }
+        
+        .card2 {
+            grid-area: card2;
+        }
+        
+        .card3 {
+            grid-area: card3;
+        }
+    }
 }
