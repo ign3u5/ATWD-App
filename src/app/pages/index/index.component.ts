@@ -9,7 +9,8 @@ import { CMSStorageService } from 'src/app/shared/cms/cmsStorageService';
     ]
 })
 export class IndexComponent {
-
-
-
+    public pageName: string;
+    constructor(private cmsService: CMSStorageService) {
+        this.cmsService.loadPage("home").subscribe(pageName => this.pageName = pageName);
+    }
 }

@@ -1,6 +1,6 @@
 <div class="card">
-      <h4><b>{{title}}</b></h4> 
+      <h4><editorc [initOptions]="headerOptions" [content]="headerContent" [editorId]="HeaderId" [isEditable]="isEditable" (contentUpdate)="updateHeader($event)"></editorc></h4> 
       <div class="hl"></div>
 <br>
-      <p><ng-content></ng-content></p> 
+      <p><editorc [initOptions]="bodyOptions" [content]="bodyContent" [editorId]="BodyId" [isEditable]="isEditable" (contentUpdate)="updateBody($event)"></editorc></p> 
 </div>

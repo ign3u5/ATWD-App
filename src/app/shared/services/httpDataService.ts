@@ -116,7 +116,7 @@ export class HttpDataService {
         .pipe(
             map((response: any) => {
                 let pageData: PageData = [] as any;
-                let pageContent: PageContent = [] as any;
+                let pageContent: Map<number, string> = new Map<number, string>();
                 response.body.data.pageContents.forEach(pageContents => {
                     pageContent[pageContents.contentId] = pageContents.content;
                 });
