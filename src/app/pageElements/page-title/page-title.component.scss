@@ -1,0 +1,11 @@
+.titleContainer{
+    text-align: center;
+    display: grid;
+    grid-template:
+    ". . ." 30vh
+    ". title .";
+}
+
+.title{
+    grid-area: title;
+}

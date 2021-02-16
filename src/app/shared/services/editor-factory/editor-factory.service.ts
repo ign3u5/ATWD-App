@@ -9,10 +9,6 @@ import { InitOptions, SetupOptions, StandardEditor } from '../../models/editor-i
 })
 export class EditorFactoryService {
 
-  getTestButton(): EditorButton{
-    return new EditorButton("Test");
-  }
-
   getHeaderOptions(): SetupOptions{
     let headerOptions = new StandardEditor();
 
@@ -25,9 +21,15 @@ export class EditorFactoryService {
     let bodyOptions = new StandardEditor();
 
     bodyOptions.quickbars_insert_toolbar = "quicktable image media codesample";
-    bodyOptions.quickbars_selection_toolbar = "bold italic underline | quicklink";
+    bodyOptions.quickbars_selection_toolbar = "bold italic underline | quicklink | forecolor backcolor";
     bodyOptions.contextmenu = "undo redo | inserttable | cell row column deletetable | help";
-    bodyOptions.toolbar = "test";
     return bodyOptions;
+  }
+
+  getSubTitleOptions(): SetupOptions{
+    let headerOptions = new StandardEditor();
+    headerOptions.quickbars_selection_toolbar = "bold italic underline | backcolor";
+    headerOptions.contextmenu = "undo redo | help";
+    return headerOptions;
   }
 }

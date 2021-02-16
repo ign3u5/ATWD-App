@@ -9,9 +9,7 @@ import { EditorFactoryService } from 'src/app/shared/services/editor-factory/edi
 })
 export class EditorCardComponent{
   public headerOptions: SetupOptions;
-  public headerContent: string;
   public bodyOptions: SetupOptions;
-  public bodyContent: string;
 
   public get HeaderId(): number {
     return +this.cardId + 1000;
