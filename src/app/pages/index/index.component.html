@@ -1,5 +1,7 @@
-<h1>Home Page</h1>
 <div class="container">
+        <h1 class="pageName">
+                <editorc [pageName]="pageName" editorId="4" [initOptions]="pageNameOptions"></editorc>
+        </h1>
         <slideshow-gallery class="gallery"></slideshow-gallery>
         
         <editor-card [pageName]="pageName" cardId="1" class="card1">This is some filler text for the supportive card</editor-card>

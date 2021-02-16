@@ -3,7 +3,7 @@
     display: grid;
     grid-template:
     ". . ." 30vh
-    ". title .";
+    ". title ." / auto 30vw auto;
 }
 
 .title{

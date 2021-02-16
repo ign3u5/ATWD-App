@@ -14,12 +14,18 @@
     grid-area: card3;
 }
 
+.pageName {
+    text-align: center;
+    grid-area: pageName;
+}
+
 .container {
     min-height: 100%;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 100vh 90vh;
+    grid-template-rows: auto 100vh 90vh;
     grid-template-areas:
+        ". . . . pageName pageName pageName pageName . . . ."
         ". . . gallery gallery gallery gallery gallery gallery . . ."
         "card1 card1 card1 card1 card2 card2 card2 card2 card3 card3 card3 card3";
     column-gap: 3vw;
