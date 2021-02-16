@@ -1,9 +1,6 @@
-import { AfterViewInit, Component, Input, OnChanges, OnInit } from '@angular/core';
-import { CMSStorageService } from 'src/app/shared/cms/cmsStorageService';
-import { EditorButton } from 'src/app/shared/models/editor-button';
-import { InitOptions, SetupOptions } from 'src/app/shared/models/editor-init-options';
+import { Component, Input} from '@angular/core';
+import { SetupOptions } from 'src/app/shared/models/editor-init-options';
 import { EditorFactoryService } from 'src/app/shared/services/editor-factory/editor-factory.service';
-import { TokenService as TokenService } from 'src/app/shared/services/token-service/token-service.service';
 
 @Component({
   selector: 'editor-card',
