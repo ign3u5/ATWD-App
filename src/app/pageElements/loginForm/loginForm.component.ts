@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { AuthenticationService } from 'src/app/shared/services/authenticationService';
 import { HttpDataService } from 'src/app/shared/services/httpDataService';
 import { StorageService } from 'src/app/shared/services/storageService';
-import { TokenServiceService } from "src/app/shared/services/token-service/token-service.service";
+import { TokenService } from "src/app/shared/services/token-service/token-service.service";
 
 @Component({
     selector: 'login-form',
@@ -18,7 +18,7 @@ export class LoginFormComponent{
     public isVisible = false;
     public buttonName: string;
     public buttonAction: () => void;
-    constructor(private client: HttpDataService, private storage: StorageService, private tokenService: TokenServiceService)
+    constructor(private client: HttpDataService, private storage: StorageService, private tokenService: TokenService)
     {
         if (tokenService.TokenIsValid)
         {
@@ -37,6 +37,7 @@ export class LoginFormComponent{
             console.log("Logging out");
             this.storage.removeCurrentUserData();
             this.setToLoggedOutState();
+            this.tokenService.checkToken();
         }
     }
 
@@ -60,6 +61,7 @@ export class LoginFormComponent{
             alert(`Welcome ${this.storage.CurrentUser.firstName}, you are now logged in`);
             this.close();
             this.setToLoggedInState();
+            this.tokenService.checkToken();
         });
     }
 }

@@ -1,18 +1,19 @@
 import { AfterViewInit, Component, Input, OnChanges, OnInit } from '@angular/core';
 import { CMSStorageService } from 'src/app/shared/cms/cmsStorageService';
-import { InitOptions } from 'src/app/shared/models/editor-init-options';
+import { EditorButton } from 'src/app/shared/models/editor-button';
+import { InitOptions, SetupOptions } from 'src/app/shared/models/editor-init-options';
 import { EditorFactoryService } from 'src/app/shared/services/editor-factory/editor-factory.service';
+import { TokenService as TokenService } from 'src/app/shared/services/token-service/token-service.service';
 
 @Component({
   selector: 'editor-card',
   templateUrl: './editor-card.component.html',
   styleUrls: ['./editor-card.component.scss']
 })
-export class EditorCardComponent implements OnChanges, AfterViewInit {
-  public isEditable: boolean;
-  public headerOptions: InitOptions;
+export class EditorCardComponent{
+  public headerOptions: SetupOptions;
   public headerContent: string;
-  public bodyOptions: InitOptions;
+  public bodyOptions: SetupOptions;
   public bodyContent: string;
 
   public get HeaderId(): number {
@@ -23,57 +24,11 @@ export class EditorCardComponent implements OnChanges, AfterViewInit {
     return +this.cardId + 100;
   }
 
-  constructor(private cmsService: CMSStorageService, private editorFactory: EditorFactoryService) {
-    this.headerOptions = editorFactory.headerOptions;
-    this.bodyOptions = editorFactory.bodyOptions
-    this.isEditable = true;
+  constructor(private editorFactory: EditorFactoryService) {
+    this.headerOptions = editorFactory.getHeaderOptions();
+    this.bodyOptions = editorFactory.getBodyOptions();
   }
 
   @Input() pageName: string;
   @Input() cardId: number;
-
-  ngAfterViewInit()
-  {
-    if (this.cmsService.pageData[this.pageName])
-    {
-        this.headerContent = this.cmsService.pageData[this.pageName][this.HeaderId];
-        this.bodyContent = this.cmsService.pageData[this.pageName][this.BodyId];
-    }
-    else if(this.pageName)
-    {
-        console.error(`Failed to load page data from memory in editor component. Check that content for ${this.HeaderId} and ${this.BodyId} is being set in ${this.pageName} component`);
-    }
-  }
-
-  ngOnChanges()
-  {
-      if (this.cmsService.pageData[this.pageName])
-      {
-          this.headerContent = this.cmsService.pageData[this.pageName][this.HeaderId];
-          this.bodyContent = this.cmsService.pageData[this.pageName][this.BodyId];
-      }
-      else if(this.pageName)
-      {
-          console.error(`Failed to load page data from memory in editor component. Check that content for ${this.HeaderId} and ${this.BodyId} is being set in ${this.pageName} component`);
-      }
-  }
-
-  updateHeader(content: string)
-  {
-    this.headerContent = content;
-    if (this.isEditable)
-    {
-      this.cmsService.pageData[this.pageName][this.HeaderId] = this.headerContent;
-    }
-  }
-
-  updateBody(content: string)
-  {
-    this.bodyContent = content;
-    if (this.isEditable)
-    {
-      this.cmsService.pageData[this.pageName][this.BodyId] = this.bodyContent;
-    }
-  }
-
 }

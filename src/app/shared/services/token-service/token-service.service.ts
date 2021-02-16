@@ -1,3 +1,4 @@
+import { i18nMetaToJSDoc } from '@angular/compiler/src/render3/view/i18n/meta';
 import { Injectable } from '@angular/core';
 import { timer, Subject, Observable } from 'rxjs';
 import { Token } from '../../models/token';
@@ -6,22 +7,27 @@ import { StorageService } from '../storageService';
 @Injectable({
   providedIn: 'root'
 })
-export class TokenServiceService {
+export class TokenService {
   expiryTimer: Observable<number>;
-  private tokenValidity;
+  private tokenValidity: boolean;
   private expiryBuffer = 10000;
 
   private token: Token;
   private currentTime: number;
 
   constructor(private storageService: StorageService) {
+    this.checkToken();
+  }
+
+  public checkToken()
+  {
     if (this.Token.exp != 0)
     {
       if (this.timeToExpire() < this.expiryBuffer)
       {
         console.log(`Token has expired`);
         this.tokenValidity = false;
-        storageService.removeCurrentUserData();
+        this.storageService.removeCurrentUserData();
       }
       else
       {
@@ -43,6 +49,7 @@ export class TokenServiceService {
     }
     else
     {
+      this.tokenValidity = false;
       console.log(`No authentication token`);
     }
   }
@@ -53,7 +60,7 @@ export class TokenServiceService {
     console.log(`Current time set to: ${this.currentTime}`);
   }
 
-  get TokenIsValid()
+  get TokenIsValid(): boolean
   {
     return this.tokenValidity;
   }

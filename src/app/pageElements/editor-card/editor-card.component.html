@@ -1,6 +1,6 @@
 <div class="card">
-      <h4><editorc [initOptions]="headerOptions" [content]="headerContent" [editorId]="HeaderId" [isEditable]="isEditable" (contentUpdate)="updateHeader($event)"></editorc></h4> 
+      <h4><editorc [pageName]="pageName" [initOptions]="headerOptions" [editorId]="HeaderId"></editorc></h4> 
       <div class="hl"></div>
 <br>
-      <p><editorc [initOptions]="bodyOptions" [content]="bodyContent" [editorId]="BodyId" [isEditable]="isEditable" (contentUpdate)="updateBody($event)"></editorc></p> 
+      <p><editorc [pageName]="pageName" [initOptions]="bodyOptions" [editorId]="BodyId"></editorc></p> 
 </div>
