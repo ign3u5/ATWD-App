@@ -18,16 +18,4 @@ export class AboutUsComponent{
         this.cmsService.loadPage("aboutUs").subscribe(pageName => this.pageName = pageName);
         this.popupClass = "popup";
     }
-
-    test(){
-    }
-
-    saveChanges()
-    {
-        this.cmsService.updatePage("aboutUs").subscribe(() => {
-            this.pageUpdated = true;
-            this.popupClass = "popup show";
-        });
-
-    }
 }
