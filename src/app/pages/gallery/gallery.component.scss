@@ -1,0 +1,78 @@
+.container {
+    display: grid;
+    grid-template:
+    "title" 90vh
+    "gallery" 100vh;
+
+    .title {
+        grid-area: title;
+    }
+
+    .gallery {
+        grid-area: gallery;
+        display: grid;
+        grid-template:
+        "photo1 photo2 photo3 photo4"
+        "photo5 photo6 photo7 photo8" / 1fr 1fr 1fr 1fr;
+        place-items: stretch;
+
+        [class*="photo"] {
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            display: grid;
+            place-items: center;
+            opacity: 0.8;
+            transition: 0.3s;
+            &:hover {
+                opacity: 1;
+            }
+            editorc {
+                padding: 5%;
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+                background-color: rgba(255, 255, 255, 0.5);
+            }
+          }
+
+        .photo1 {
+            background-image: url(https://api.ws311471.remote.ac/images/bear.jpg);
+            grid-area: photo1;
+        }
+        
+        .photo2 {
+            background-image: url(https://api.ws311471.remote.ac/images/bear.jpg);
+            grid-area: photo2;
+        }
+        
+        .photo3 {
+            background-image: url(https://api.ws311471.remote.ac/images/bear.jpg);
+            grid-area: photo3;
+        }
+        
+        .photo4 {
+            background-image: url(https://api.ws311471.remote.ac/images/bear.jpg);
+            grid-area: photo4;
+        }
+        
+        .photo5 {
+            background-image: url(https://api.ws311471.remote.ac/images/bear.jpg);
+            grid-area: photo5;
+        }
+        
+        .photo6 {
+            background-image: url(https://api.ws311471.remote.ac/images/bear.jpg);
+            grid-area: photo6;
+        }
+        
+        .photo7 {
+            background-image: url(https://api.ws311471.remote.ac/images/bear.jpg);
+            grid-area: photo7;
+        }
+        
+        .photo8 {
+            background-image: url(https://api.ws311471.remote.ac/images/bear.jpg);
+            grid-area: photo8;
+        }
+    }
+}
+
+

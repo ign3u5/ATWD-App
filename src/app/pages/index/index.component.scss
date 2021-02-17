@@ -11,6 +11,11 @@
 .card3 {
     grid-area: card3;
 }
+.hl {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 5px;
+}
 
 
 
@@ -20,7 +25,7 @@
     grid-template: 
     ". pageName ."
     ". gallery ."
-    "secondPage secondPage secondPage"/auto auto auto;
+    "secondPage secondPage secondPage" 100vh/auto 50vw auto;
     column-gap: 3vw;
     row-gap: 3vh;
 
@@ -37,8 +42,16 @@
         grid-area: secondPage;
         display: grid;
         column-gap: 3vw;
+        place-items: center;
         grid-template: 
+        "title title title"
         "card1 card2 card3";
+        .title {
+            grid-area: title;
+        }
+        [class*="card"] {
+            align-self: start;
+          }
         .card1 {
             grid-area: card1;
         }
