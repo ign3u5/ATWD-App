@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SetupOptions } from 'src/app/shared/models/editor-init-options';
+import { EditorType } from 'src/app/shared/models/editor-type';
 import { EditorFactoryService } from 'src/app/shared/services/editor-factory/editor-factory.service';
 
 @Component({
@@ -9,8 +10,8 @@ import { EditorFactoryService } from 'src/app/shared/services/editor-factory/edi
 })
 export class PageTitleComponent{
 
-  public titleOptions: SetupOptions;
-  public subTitleOptions: SetupOptions;
+  public titleOptionsType: EditorType;
+  public subTitleOptionsType: EditorType;
 
   public get TitleId(): number {
     return +this.pageTitleId + 1000;
@@ -20,9 +21,9 @@ export class PageTitleComponent{
     return +this.pageTitleId + 100;
   }
 
-  constructor(private editorFactory: EditorFactoryService) {
-    this.titleOptions = editorFactory.getHeaderOptions();
-    this.subTitleOptions = editorFactory.getSubTitleOptions();
+  constructor() {
+    this.titleOptionsType = EditorType.Title
+    this.subTitleOptionsType = EditorType.SubTitle
    }
 
   @Input() pageName: string;

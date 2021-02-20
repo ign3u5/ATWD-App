@@ -1,5 +1,6 @@
 import { Component, Input} from '@angular/core';
 import { SetupOptions } from 'src/app/shared/models/editor-init-options';
+import { EditorType } from 'src/app/shared/models/editor-type';
 import { EditorFactoryService } from 'src/app/shared/services/editor-factory/editor-factory.service';
 
 @Component({
@@ -8,8 +9,8 @@ import { EditorFactoryService } from 'src/app/shared/services/editor-factory/edi
   styleUrls: ['./editor-card.component.scss']
 })
 export class EditorCardComponent{
-  public headerOptions: SetupOptions;
-  public bodyOptions: SetupOptions;
+  public headerOptions: EditorType;
+  public bodyOptions: EditorType;
 
   public get HeaderId(): number {
     return +this.cardId + 1000;
@@ -19,9 +20,9 @@ export class EditorCardComponent{
     return +this.cardId + 100;
   }
 
-  constructor(private editorFactory: EditorFactoryService) {
-    this.headerOptions = editorFactory.getHeaderOptions();
-    this.bodyOptions = editorFactory.getBodyOptions();
+  constructor() {
+    this.headerOptions = EditorType.Title;
+    this.bodyOptions = EditorType.Body;
   }
 
   @Input() pageName: string;

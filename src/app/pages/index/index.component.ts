@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { CMSStorageService } from 'src/app/shared/cms/cmsStorageService';
 import { SetupOptions } from "src/app/shared/models/editor-init-options";
+import { EditorType } from "src/app/shared/models/editor-type";
 import { EditorFactoryService } from "src/app/shared/services/editor-factory/editor-factory.service";
 
 @Component({
@@ -12,9 +13,10 @@ import { EditorFactoryService } from "src/app/shared/services/editor-factory/edi
 })
 export class IndexComponent {
     public pageName: string;
-    public pageNameOptions: SetupOptions;
+    public headerOptionsType: EditorType;
+
     constructor(private cmsService: CMSStorageService, private editorFactory: EditorFactoryService) {
         this.cmsService.loadPage("home").subscribe(pageName => this.pageName = pageName);
-        this.pageNameOptions = editorFactory.getHeaderOptions();
+        this.headerOptionsType = EditorType.Title;
     }
 }

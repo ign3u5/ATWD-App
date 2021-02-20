@@ -4,6 +4,8 @@ import { map } from 'rxjs/operators';
 import { CMSStorageService } from 'src/app/shared/cms/cmsStorageService';
 import { EditorButton } from 'src/app/shared/models/editor-button';
 import { InitOptions, SetupOptions } from 'src/app/shared/models/editor-init-options';
+import { EditorType } from 'src/app/shared/models/editor-type';
+import { EditorFactoryService } from 'src/app/shared/services/editor-factory/editor-factory.service';
 import { TokenService } from 'src/app/shared/services/token-service/token-service.service';
 
 @Component({
@@ -16,21 +18,23 @@ import { TokenService } from 'src/app/shared/services/token-service/token-servic
 export class EditorComponent implements OnInit, OnChanges{
     public apiKey: string;
     public content: string;
+    public initOptions: SetupOptions;
     public get isEditable(): boolean {
         return this.tokenService.TokenIsValid;
     }
 
-    @Input() initOptions: SetupOptions;
+    @Input() optionsType: EditorType;
     @Input() editorId: number;
     @Input() pageName: string;
     @Output() contentUpdate = new EventEmitter<string>();
 
-    constructor(private cmsService: CMSStorageService, private tokenService: TokenService) {
+    constructor(private cmsService: CMSStorageService, private tokenService: TokenService, private editorFactory: EditorFactoryService) {
         this.apiKey = "t3yjki3k9abk4gc0ghgkc0yzuxr8cgm80mefx3uh1ps0u7fd";
     }
 
     ngOnInit()
     {
+        this.initOptions = this.editorFactory.getSetupOptionsFromType(this.optionsType);
         let button = new EditorButton("Save");
         button.onAction = () => {
             this.updateContent();

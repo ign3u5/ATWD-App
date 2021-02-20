@@ -3,11 +3,25 @@ import { Injectable } from '@angular/core';
 import { setupTestingRouter } from '@angular/router/testing';
 import { EditorButton } from '../../models/editor-button';
 import { InitOptions, SetupOptions, StandardEditor } from '../../models/editor-init-options';
+import { EditorType } from '../../models/editor-type';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EditorFactoryService {
+
+  getSetupOptionsFromType(type: EditorType): SetupOptions{
+    switch(type){
+      case EditorType.Title:
+        return this.getHeaderOptions();
+      case EditorType.SubTitle:
+        return this.getSubTitleOptions();
+      case EditorType.Body:
+        return this.getBodyOptions();
+      default:
+        return null;
+    }
+  }
 
   getHeaderOptions(): SetupOptions{
     let headerOptions = new StandardEditor();
