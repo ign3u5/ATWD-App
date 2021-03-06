@@ -21,11 +21,12 @@
 
 .container {
     min-height: 100%;
+    height: 100vh;
     display: grid;
     grid-template: 
-    ". pageName ."
-    ". gallery ."
-    "secondPage secondPage secondPage" 100vh/auto 50vw auto;
+    ". pageName ." 
+    ". gallery ." 
+    "secondPage secondPage secondPage" /auto 50vw auto;
     column-gap: 3vw;
     row-gap: 3vh;
 
@@ -36,6 +37,8 @@
 
     .gallery {
         grid-area: gallery;
+        max-width: 1200px;
+        justify-self: center;
     }
 
     .secondPage {

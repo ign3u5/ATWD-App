@@ -4,10 +4,25 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    min-height: 100vh;
+    max-height: 100vh;
     height: auto;
     padding-left: 1vw;
     padding-right: 1vw;
     padding-bottom: 1vw;
+    display: grid;
+    grid-template: 
+    "navbar" 
+    "router-outlet" / auto;
+}
+
+.navbar {
+    grid-area: navbar;
+    height: 10vh;
+}
+
+.router-outlet {
+    grid-area: router-outlet;
+    height: 90vh;
+    overflow: auto;
 
 }
