@@ -1,0 +1,25 @@
+.container {
+    display: grid;
+    grid-template: 
+    "title" minmax(90vh, 1fr)
+    "page-content" 5fr;
+
+    .title {
+        grid-area: title;
+    }
+
+    .content {
+        grid-area: page-content;
+        display: grid;
+        grid-template:
+        "graphic-design" 1fr
+        "photography" 1fr
+        "website-design" 1fr
+        "branding" 1fr
+        "social-media" 1fr ;
+
+        graphics-design{
+            grid-area: graphic-design;
+        }
+    }
+}

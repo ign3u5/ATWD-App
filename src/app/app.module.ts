@@ -22,6 +22,7 @@ import { PopUpButtonComponent } from './pageElements/pop-up-button/pop-up-button
 import { SlideshowGalleryComponent } from './pageElements/slideshow-gallery/slideshow-gallery.component';
 import { EditorCardComponent } from './pageElements/editor-card/editor-card.component';
 import { PageTitleComponent } from './pageElements/page-title/page-title.component';
+import { GraphicsDesignComponent } from './pages/services/service-subpage/service-subpage.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { PageTitleComponent } from './pageElements/page-title/page-title.compone
     PopUpButtonComponent,
     SlideshowGalleryComponent,
     EditorCardComponent,
-    PageTitleComponent
+    PageTitleComponent,
+    GraphicsDesignComponent
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,56 @@
 .container {
+    height: 200%;
     display: grid;
     grid-template: 
-    "title" 90vh
-    "page-content" 100vh;
+    "title" minmax(90vh, 1fr)
+    "page-content" 1fr;
     .title {
         grid-area: title;
     }
     .content {
         grid-area: page-content;
+        display: grid;
+        gap: 2vw 2vh;
+        grid-template:
+        "card1 image1 image1"
+        "image2 image2 card2"
+        "card3 image3 image3" / 1fr 1fr 1fr;
+
+        img {
+            width: 100%;
+        }
+
+        [class*="image"] {
+            align-self: center;
+
+        }
+
+        [class*="card"] {
+            align-self: center;
+        }
+
+        .card1{
+            grid-area: card1;
+        }
+
+        .card2 {
+            grid-area: card2;
+        }
+
+        .card3 {
+            grid-area: card3;
+        }
+
+        .image1 {
+            grid-area: image1;
+        }
+        
+        .image2 {
+            grid-area: image2;
+        }
+        
+        .image3 {
+            grid-area: image3;
+        }
     }
 }

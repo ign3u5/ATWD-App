@@ -3,7 +3,10 @@ import { CMSStorageService } from "src/app/shared/cms/cmsStorageService";
 
 @Component({
     selector: 'services',
-    templateUrl: './services.component.html'
+    templateUrl: './services.component.html',
+    styleUrls: [
+        'services.component.scss'
+    ]
 })
 export class ServicesComponent {
     public pageName: string;

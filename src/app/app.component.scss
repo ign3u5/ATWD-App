@@ -11,18 +11,19 @@
     padding-bottom: 1vw;
     display: grid;
     grid-template: 
-    "navbar" 
-    "router-outlet" / auto;
+    "navbar" 10vh 
+    "router-outlet" 90vh / auto;
+
+    .navbar {
+        grid-area: navbar;
+    }
+    
+    .router-outlet {
+        grid-area: router-outlet;
+        justify-self: center;
+        overflow: auto;
+        width: 100%;
+        max-width: 1920px;
+    }
 }
 
-.navbar {
-    grid-area: navbar;
-    height: 10vh;
-}
-
-.router-outlet {
-    grid-area: router-outlet;
-    height: 90vh;
-    overflow: auto;
-
-}

@@ -17,16 +17,13 @@
     margin-bottom: 5px;
 }
 
-
-
 .container {
-    min-height: 100%;
-    height: 100vh;
+    min-height: 200%;
     display: grid;
     grid-template: 
-    ". pageName ." 
-    ". gallery ." 
-    "secondPage secondPage secondPage" /auto 50vw auto;
+    ". pageName ." 1fr
+    ". gallery ." 9fr
+    "secondPage secondPage secondPage" 10fr /auto 50vw auto;
     column-gap: 3vw;
     row-gap: 3vh;
 
