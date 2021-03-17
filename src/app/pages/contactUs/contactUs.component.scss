@@ -1,0 +1,21 @@
+.container {
+    height: 200%;
+    display: grid;
+    grid-template: 
+    "title" minmax(90vh, 1fr)
+    "page-content" 1fr;
+    .title {
+        grid-area: title;
+    }
+    .content {
+        grid-area: page-content;
+        display: grid;
+        gap: 2vw 2vh;
+        grid-template:
+        "contact-form";
+        
+        .contact-form {
+            grid-area: contact-form;
+        }
+    }
+}

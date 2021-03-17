@@ -1,1 +1,28 @@
-<page-title [pageName]="pageName" pageTitleId="1"></page-title>
+<div class="container">
+    <div class="title">
+        <page-title [pageName]="pageName" pageTitleId="1"></page-title>
+    </div>
+    <div class="pageContent">
+        <div class="contact-form">
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+                <label>
+                    Name:
+                    <input type="text" formControlName="name" required>
+                </label>
+                <label>
+                    Company (optional):
+                    <input type="text" formControlName="company">
+                </label>
+                <label>
+                    Email:
+                    <input type="text" formControlName="email" required>
+                </label>
+                <label>
+                    Message:
+                    <input type="text" formControlName="message" required>
+                </label>
+                <button type="submit" [disabled]="!contactForm.valid">Send</button>
+            </form>
+        </div>
+    </div>
+</div>
