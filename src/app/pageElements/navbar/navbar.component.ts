@@ -14,7 +14,7 @@ export class NavbarComponent {
     public authActionName = "Login";
     constructor(private tokenService: TokenService, private route: Router){
         this.pages = [
-            new Page("Admin", "admin", tokenService.TokenIsValid),
+            new Page("Admin", "admin", tokenService.UserIsAdmin),
             new Page("Contact Us", "contactUs"),
             new Page("Gallery", "gallery"),
             new Page("Services", "services"),
@@ -23,10 +23,10 @@ export class NavbarComponent {
         ];
     }
 
-    changeLoggedInState(isLoggedIn: boolean)
+    changeLoggedInState()
     {
-        this.pages[0].enabled = isLoggedIn;
-        if (!isLoggedIn)
+        this.pages[0].enabled = this.tokenService.UserIsAdmin;
+        if (!this.tokenService.UserIsAdmin)
         {
             if (this.route.url == '/admin')
             {

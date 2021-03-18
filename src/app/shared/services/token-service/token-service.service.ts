@@ -9,7 +9,7 @@ import { StorageService } from '../storageService';
 })
 export class TokenService {
   expiryTimer: Observable<number>;
-  private tokenValidity: boolean;
+  private tokenValidity = false;
   private expiryBuffer = 10000;
 
   private token: Token;
@@ -63,6 +63,13 @@ export class TokenService {
   get TokenIsValid(): boolean
   {
     return this.tokenValidity;
+  }
+
+  get UserIsAdmin(): boolean
+  {
+    if (this.TokenIsValid && this.Token.privilegeLevel > 2)
+      return true;
+    return false;
   }
 
   private timeToExpire(): number

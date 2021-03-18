@@ -11,12 +11,12 @@ export class AdminGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (!this.tokenService.TokenIsValid)
+      if (!this.tokenService.UserIsAdmin)
       {
         alert(`You do not have sufficient privileges!`);
         this.router.navigateByUrl('/home');
       }
-    return this.tokenService.TokenIsValid;
+    return this.tokenService.UserIsAdmin;
   }
   
 }

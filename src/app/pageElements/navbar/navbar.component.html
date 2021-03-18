@@ -1,5 +1,5 @@
 <div class="topnav">
-    <login-form (StatusChange)="changeLoggedInState($event)"></login-form>
+    <login-form (StatusChange)="changeLoggedInState()"></login-form>
     <div *ngFor="let p of pages">
         <a *ngIf="p.enabled" routerLink="{{ p.link }}" routerLinkActive="active">{{ p.name }}</a>
     </div>
