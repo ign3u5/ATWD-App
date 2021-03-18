@@ -23,6 +23,7 @@ import { SlideshowGalleryComponent } from './pageElements/slideshow-gallery/slid
 import { EditorCardComponent } from './pageElements/editor-card/editor-card.component';
 import { PageTitleComponent } from './pageElements/page-title/page-title.component';
 import { GraphicsDesignComponent } from './pages/services/service-subpage/service-subpage.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { GraphicsDesignComponent } from './pages/services/service-subpage/servic
     SlideshowGalleryComponent,
     EditorCardComponent,
     PageTitleComponent,
-    GraphicsDesignComponent
+    GraphicsDesignComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

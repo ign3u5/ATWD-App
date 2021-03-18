@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { PageContent } from '../cms/models/pageContent';
 import { PageData } from '../cms/models/pageData';
+import { ContactFormData } from '../models/contact-form-data';
 import { Credentials } from '../models/credentials';
 import { PageDataResponse } from '../models/pageDataResponse';
 import { User } from '../models/user';
@@ -102,6 +103,18 @@ export class HttpDataService {
         .pipe(
             map((response: any) => {
                 this.storageService.Token = response.headers.get('Token');
+                console.log(response.body.message);
+            }),
+            catchError(this.handleError)
+        );
+    }
+
+    submitContactForm(formData: ContactFormData): Observable<void>
+    {
+        return this.client
+        .post<void>(`${this.baseAddress}contact.php`, formData, {observe: 'response'})
+        .pipe(
+            map((response: any) => {
                 console.log(response.body.message);
             }),
             catchError(this.handleError)

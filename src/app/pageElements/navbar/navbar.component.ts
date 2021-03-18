@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { TokenService } from 'src/app/shared/services/token-service/token-service.service';
 
 @Component({
     selector: 'navbar',
@@ -8,28 +10,33 @@ import { Component } from '@angular/core';
     ]
 })
 export class NavbarComponent {
-    public pages: Pages[];
-    public loginIsActive = false;
+    public pages: Page[];
     public authActionName = "Login";
-    constructor(){
+    constructor(private tokenService: TokenService, private route: Router){
         this.pages = [
-            { name: "Contact Us", link: "contactUs"},
-            { name: "Gallery", link: "gallery"},
-            { name: "Services", link: "services"},
-            { name: "About Us", link: "aboutUs"},
-            { name: "Home", link: "home"},
+            new Page("Admin", "admin", tokenService.TokenIsValid),
+            new Page("Contact Us", "contactUs"),
+            new Page("Gallery", "gallery"),
+            new Page("Services", "services"),
+            new Page("About Us", "aboutUs"),
+            new Page("Home", "home"),
         ];
     }
-    activateLogin()
+
+    changeLoggedInState(isLoggedIn: boolean)
     {
-        this.loginIsActive = true;
-    }
-    loggedIn()
-    {
-        this.authActionName = "Logout";
+        this.pages[0].enabled = isLoggedIn;
+        if (!isLoggedIn)
+        {
+            if (this.route.url == '/admin')
+            {
+                this.route.navigateByUrl('/home');
+            }
+        }
     }
 }
-class Pages{
-    name: string;
-    link: string;
+class Page {
+    constructor(public name: string, public link: string, public enabled: boolean = true) {
+        console.log(`Page name: ${name}. Enabled: ${enabled}`);
+     }
 }

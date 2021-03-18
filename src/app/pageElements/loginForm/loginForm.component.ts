@@ -15,6 +15,9 @@ export class LoginFormComponent{
         username: new FormControl(''),
         password: new FormControl('')
     });
+
+    @Output() StatusChange = new EventEmitter<boolean>();
+
     public isVisible = false;
     public buttonName: string;
     public buttonAction: () => void;
@@ -39,6 +42,7 @@ export class LoginFormComponent{
             this.setToLoggedOutState();
             this.tokenService.checkToken();
         }
+        this.StatusChange.emit(true);
     }
 
     setToLoggedOutState()
@@ -47,6 +51,7 @@ export class LoginFormComponent{
         this.buttonAction = () => {
             this.isVisible = true;
         }
+        this.StatusChange.emit(false);
     }
 
     close()
