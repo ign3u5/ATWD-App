@@ -134,7 +134,9 @@ export class HttpDataService {
                     pageContent[pageContents.contentId] = pageContents.content;
                 });
                 pageData[response.body.data.pageName] = pageContent;
-                console.log(`Returning page data from API call: ${JSON.stringify(response.body.data)}`);
+                console.groupCollapsed(`Get page response: ${response.body.message}`);
+                    console.log(`Returning page data from API call: ${JSON.stringify(response.body.data)}`);
+                console.groupEnd();
                 return pageData as PageData;
             }),
             catchError(this.handleError)
@@ -148,13 +150,11 @@ export class HttpDataService {
         .pipe(
             map((response: any) => {
                 this.storageService.Token = response.headers.get('Token');
-                console.log(response.body.message);
+                console.log(`Update page response: ${response.body.message}`);
             }),
             catchError(this.handleError)
         );
     }
-
-    
 
     private setTokenHeader(): HttpHeaders {
         return new HttpHeaders({Token: this.storageService.Token});
@@ -172,7 +172,6 @@ export class HttpDataService {
     }
 
     private handleError(error: HttpErrorResponse): Observable<never> {
-        alert(`${error.error.message}`);
         console.error(`Login error: ${error.error.message}`);
         return throwError('An error occurred');
     }
