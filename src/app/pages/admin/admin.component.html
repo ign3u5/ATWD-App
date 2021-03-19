@@ -16,11 +16,11 @@
             <td></td>
         </tr>
         <tr *ngFor="let user of users">
-            <td contenteditable>{{ user.username }}</td>
+            <td contenteditable (input)="">{{ user.username }}</td>
             <td contenteditable>{{ user.firstName }}</td>
             <td contenteditable>{{ user.lastName }}</td>
             <td contenteditable>{{ user.email }}</td>
-            <td></td>
+            <td><div (click)="Save(user.username)">Save</div></td>
         </tr>
     </table>
 </div>

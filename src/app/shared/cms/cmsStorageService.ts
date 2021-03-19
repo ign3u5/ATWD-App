@@ -19,19 +19,26 @@ export class CMSStorageService
 
     public loadPage(pageName: string): Observable<string>
     {
+        console.groupCollapsed(`Load page action for ${pageName}`);
         if (this.pageData[pageName])
         {
             console.log(`Memory contains page data for ${pageName}.`);
+            console.groupEnd();
+
             return new Observable<string>(observer => 
                 observer.next(pageName));
         }
         else
         {
             console.log(`Memory does not contain page data for ${pageName}, setting page name observable to wait for API to return data to memory.`);
+            console.groupEnd();
+
             return this.client.getPage(pageName).pipe(
                 map(page => {
                     this.pageData[pageName] = page[pageName];
+                    console.groupCollapsed(`Storing content for ${pageName}`)
                     console.log(`The following content for ${pageName} is being added to memory: ${JSON.stringify(page[pageName])}`);
+                    console.groupEnd();
                     return pageName;
                 })
             )
@@ -40,9 +47,10 @@ export class CMSStorageService
 
     public updatePage(pageName: string): Observable<void>
     {
-        console.log("Updated page was called, CMS Storage Service");
+        console.groupCollapsed(`Update page action for ${pageName}`);
         if (this.pageData[pageName])
         {
+            console.groupEnd(); 
             let updatedPageData: PageDataResponse = {pageName: pageName, pageContents: []}
             for (let pageContent in this.pageData[pageName])
             {
@@ -57,6 +65,7 @@ export class CMSStorageService
         else
         {
             console.error("Page data has not yet been loaded");
+            console.groupEnd(); 
             return new Observable(observer => observer.next());
         }
     }
