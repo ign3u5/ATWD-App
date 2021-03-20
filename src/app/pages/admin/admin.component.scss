@@ -4,38 +4,54 @@
     gap: 2vh;
     grid-template: 
     "title ." 1fr
-    "management-table management-table" 3fr;
-}
+    "user-management user-management" 3fr;
 
-.title {
-    grid-area: title;
-    justify-self: center;
-}
-
-table {
-    grid-area: management-table;
-    justify-self: center;
-
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 50%;
-
-    th, td {
-        text-align: left;
-        padding: 16px;
+    .title {
+        grid-area: title;
+        justify-self: center;
     }
+
+    .user-management {
+        grid-area: user-management;
+        display: grid;
+        gap: 2vw;
+        grid-template: 
+        "management-table buttons" / auto minmax(40px, auto);
+
+        table {
+            grid-area: management-table;
+            justify-self: center;
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
         
-    tr {
-        &:nth-child(even)
-        {
-            background-color: rgb(242, 242, 242);
+            th, td {
+                text-align: left;
+                padding: 16px;
+            }
+                
+            tr {
+                &:nth-child(even)
+                {
+                    background-color: rgb(242, 242, 242);
+                }
+        
+                &:nth-child(odd)
+                {
+                    background-color: rgba(242, 242, 242, 0.5)
+                }
+            }
         }
-
-        &:nth-child(odd)
-        {
-            background-color: rgba(242, 242, 242, 0.5)
+    
+        .controls {
+            grid-area: buttons;
+            align-self: start;
         }
     }
+
+    
 }
+
+
   
 

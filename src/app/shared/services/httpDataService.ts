@@ -6,6 +6,7 @@ import { PageContent } from '../cms/models/pageContent';
 import { PageData } from '../cms/models/pageData';
 import { ContactFormData } from '../models/contact-form-data';
 import { Credentials } from '../models/credentials';
+import { NewUser } from '../models/new-user';
 import { PageDataResponse } from '../models/pageDataResponse';
 import { User } from '../models/user';
 import { StorageService } from './storageService';
@@ -82,7 +83,7 @@ export class HttpDataService {
         );
     }
 
-    createNewUser(user: User): Observable<void>
+    createNewUser(user: NewUser): Observable<void>
     {
         return this.client
         .post<void>(`${this.baseAddress}users.php`, user, {headers: this.setTokenHeader(), observe: 'response'})
