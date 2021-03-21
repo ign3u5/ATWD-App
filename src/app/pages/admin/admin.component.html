@@ -19,7 +19,7 @@
                 <td><div *ngIf='user.privilegeLevel/3 !=1' (click)="onDelete(i)">Delete</div></td>
             </tr>
         </table>
-        <div class="controls">
+        <div class="controls form">
             <form [formGroup]="newUserForm" (ngSubmit)="onSubmitNewUser()">
                 <label>
                     Username:
@@ -37,11 +37,11 @@
                     Last Name:
                     <input type="text" formControlName="lastName" required>
                 </label>
-                <label>
+                <label class="full-width">
                     Email:
                     <input type="text" formControlName="email" required>
                 </label>
-                <button type="submit" [disabled]="!newUserForm.valid">Create</button>
+                <button class="full-width" type="submit" [disabled]="!newUserForm.valid">Create</button>
             </form>
         </div>
     </div>

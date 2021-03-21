@@ -7,7 +7,7 @@ import { HttpDataService } from 'src/app/shared/services/httpDataService';
 @Component({
   selector: 'admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  styleUrls: ['./admin.component.scss','../../shared/styles/form.scss']
 })
 export class AdminComponent implements OnInit {
   users: User[];

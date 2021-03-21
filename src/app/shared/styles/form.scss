@@ -1,0 +1,24 @@
+.form {
+    grid-area: c-form;
+    background: rgba(242, 242, 242, 0.5);
+    padding: 1em;
+
+    form {
+        display: grid;
+        gap: 2vw;
+        grid-template-columns: 1fr 1fr;
+        
+        label {
+            display: block;
+        }
+
+        .full-width {
+            grid-column: 1 / 3;
+        }
+
+        input, button, textarea {
+            width: 100%;
+            padding: 1em;
+        }
+    }
+}

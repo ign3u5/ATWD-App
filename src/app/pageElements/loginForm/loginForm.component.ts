@@ -8,7 +8,7 @@ import { TokenService } from "src/app/shared/services/token-service/token-servic
 @Component({
     selector: 'login-form',
     templateUrl: './loginForm.component.html',
-    styleUrls: ['./loginForm.component.scss', '../navbar/navbar.component.scss']
+    styleUrls: ['./loginForm.component.scss', '../navbar/navbar.component.scss', '../../shared/styles/form.scss']
 })
 export class LoginFormComponent{
     loginForm = new FormGroup({
