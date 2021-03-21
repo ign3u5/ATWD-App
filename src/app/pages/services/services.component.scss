@@ -1,7 +1,8 @@
 .container {
+    height: 600%;
     display: grid;
     grid-template: 
-    "title" minmax(90vh, 1fr)
+    "title" 1fr
     "page-content" 5fr;
 
     .title {
@@ -11,6 +12,7 @@
     .content {
         grid-area: page-content;
         display: grid;
+        align-items: center;
         grid-template:
         "graphic-design" 1fr
         "photography" 1fr

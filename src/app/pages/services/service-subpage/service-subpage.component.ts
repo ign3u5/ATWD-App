@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CMSStorageService } from 'src/app/shared/cms/cmsStorageService';
+import { EditorType } from 'src/app/shared/models/editor-type';
 
 @Component({
   selector: 'service-subpage',
@@ -10,6 +11,7 @@ export class GraphicsDesignComponent implements OnInit {
   @Input() page: string;
   @Input() imageSrc: string;
   public pageName: string;
+  public titleOptions = EditorType.Title;
 
   constructor(private cmsService: CMSStorageService){
   }

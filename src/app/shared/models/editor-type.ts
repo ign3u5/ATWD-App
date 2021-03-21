@@ -1,5 +1,6 @@
 export enum EditorType{
     Title,
     SubTitle,
-    Body
+    Body,
+    List
 }

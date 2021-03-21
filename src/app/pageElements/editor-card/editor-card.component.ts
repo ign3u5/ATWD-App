@@ -25,6 +25,14 @@ export class EditorCardComponent{
     this.bodyOptions = EditorType.Body;
   }
 
+  ngOnInit() {
+    if (this.options == "list")
+    {
+      this.bodyOptions = EditorType.List;
+    }
+  }
+
   @Input() pageName: string;
   @Input() cardId: number;
+  @Input() options: string;
 }

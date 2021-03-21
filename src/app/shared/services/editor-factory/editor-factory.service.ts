@@ -18,6 +18,8 @@ export class EditorFactoryService {
         return this.getSubTitleOptions();
       case EditorType.Body:
         return this.getBodyOptions();
+      case EditorType.List:
+        return this.getListOptions();
       default:
         return null;
     }
@@ -36,6 +38,15 @@ export class EditorFactoryService {
 
     bodyOptions.quickbars_insert_toolbar = "quicktable image media codesample";
     bodyOptions.quickbars_selection_toolbar = "bold italic underline | quicklink | forecolor backcolor";
+    bodyOptions.contextmenu = "undo redo | inserttable | cell row column deletetable | help";
+    return bodyOptions;
+  }
+
+  getListOptions(): SetupOptions{
+    let bodyOptions = new StandardEditor();
+
+    bodyOptions.quickbars_insert_toolbar = "quicktable image media codesample";
+    bodyOptions.quickbars_selection_toolbar = "bold italic underline | quicklink | forecolor backcolor | bullist";
     bodyOptions.contextmenu = "undo redo | inserttable | cell row column deletetable | help";
     return bodyOptions;
   }
