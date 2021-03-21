@@ -38,7 +38,7 @@ export class ContactUsComponent {
         this.httpClient
             .submitContactForm(contactFormData)
             .subscribe(() => {
-                alert(`Thanks ${contactFormData.name}, your message has been successfully sent!`);
+                alert(`Thanks ${contactFormData.name}, your message has been successfully sent! Someone will return the message shortly.`);
                 this.contactForm.reset();
             });
     }
