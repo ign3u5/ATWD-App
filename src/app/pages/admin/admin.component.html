@@ -16,7 +16,7 @@
                 <td contenteditable (input)="onLastNameUpdate($event.target.innerHTML, i)">{{ user.lastName }}</td>
                 <td contenteditable (input)="onEmailUpdate($event.target.innerHTML, i)">{{ user.email }}</td>
                 <td><div *ngIf="isUserUpdated[i] && isUserValid[i]" (click)="onSave(i)">Save</div></td>
-                <td><div *ngIf='user.privilegeLevel/3 !=1'>Delete</div></td>
+                <td><div *ngIf='user.privilegeLevel/3 !=1' (click)="onDelete(i)">Delete</div></td>
             </tr>
         </table>
         <div class="controls">
@@ -41,7 +41,7 @@
                     Email:
                     <input type="text" formControlName="email" required>
                 </label>
-                <button type="submit" [disabled]="!newUserForm.valid">Send</button>
+                <button type="submit" [disabled]="!newUserForm.valid">Create</button>
             </form>
         </div>
     </div>

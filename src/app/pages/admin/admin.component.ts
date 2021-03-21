@@ -27,7 +27,13 @@ export class AdminComponent implements OnInit {
 });
 
   constructor(private httpClient: HttpDataService, private formBuilder: FormBuilder) {
-    httpClient.getAllUsers()
+    this.loadUsers();
+  }
+
+  private loadUsers()
+  {
+    console.log(`Requesting all users`);
+    this.httpClient.getAllUsers()
       .subscribe(users => {
         this.users = users;
         console.groupCollapsed(`Recevied users`);
@@ -123,5 +129,15 @@ export class AdminComponent implements OnInit {
         alert(`${this.updatedUsers[index].username}'s profile has been saved successfully`);
       })
     this.isUserUpdated[index] = false;
+  }
+
+  onDelete(index: number) {
+    console.log(`Deleted user ${this.updatedUsers[index].username}`);
+    this.httpClient.deleteUser(this.updatedUsers[index].username)
+      .subscribe(() => {
+        console.log(`${this.updatedUsers[index].username} has been successfully deleted`);
+        alert(`${this.updatedUsers[index].username}'s profile has been deleted successfully`);
+        this.loadUsers();
+      });
   }
 }

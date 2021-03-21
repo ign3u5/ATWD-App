@@ -26,7 +26,7 @@ export class HttpDataService {
                 this.storageService.CurrentUser = response.body.data as User;
                 console.log(response.body.message);
             }),
-            catchError(this.handleError)
+            catchError(this.handleLoginError)
         );
     }
 
@@ -172,8 +172,14 @@ export class HttpDataService {
         return httpParams;
     }
 
+    private handleLoginError(error: HttpErrorResponse): Observable<never> {
+        let reason = `Failed to login. ${error.error.message}`;
+        alert(reason);
+        return throwError(`The following login error occured: ${reason}`);
+    }
+
     private handleError(error: HttpErrorResponse): Observable<never> {
-        console.error(`Login error: ${error.error.message}`);
+        console.error(`HttpDataService Error: ${error.error.message}`);
         return throwError('An error occurred');
     }
 }
