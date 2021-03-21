@@ -12,7 +12,8 @@
     display: grid;
     grid-template: 
     "navbar" 10vh 
-    "router-outlet" 90vh / auto;
+    "router-outlet" 86vh
+    "footer" 4vh / auto;
 
     .navbar {
         grid-area: navbar;
@@ -24,6 +25,19 @@
         overflow: auto;
         width: 100%;
         max-width: 1920px;
+    }
+
+    footer {
+        grid-area: footer;
+        text-align:center;
+        color: white;
+        padding: 1em;
+
+        h4, a {
+            vertical-align: middle;
+            display: inline-block;
+            margin-right: 1rem;
+        }
     }
 }
 
