@@ -1,8 +1,10 @@
 .container {
+
+    height: 200%;
     display: grid;
     grid-template:
-    "title" 90vh
-    "gallery" 100vh;
+    "title" 1fr
+    "gallery" 1fr;
 
     .title {
         grid-area: title;
@@ -14,10 +16,10 @@
         grid-template:
         "photo1 photo2 photo3 photo4"
         "photo5 photo6 photo7 photo8" / 1fr 1fr 1fr 1fr;
-        place-items: stretch;
+        place-items: auto;
 
         [class*="photo"] {
-            background-size: 100% 100%;
+            background-size: cover;
             background-repeat: no-repeat;
             display: grid;
             place-items: center;
@@ -34,42 +36,42 @@
           }
 
         .photo1 {
-            background-image: url(https://api.ws311471.remote.ac/images/bear.jpg);
+            background-image: url(https://api.ws311471.remote.ac/images/city/city_scape_warm.jpg);
             grid-area: photo1;
         }
         
         .photo2 {
-            background-image: url(https://api.ws311471.remote.ac/images/bear.jpg);
+            background-image: url(https://api.ws311471.remote.ac/images/city/full_red_bridge.jpg);
             grid-area: photo2;
         }
         
         .photo3 {
-            background-image: url(https://api.ws311471.remote.ac/images/bear.jpg);
+            background-image: url(https://api.ws311471.remote.ac/images/city/misty_bridge.jpg);
             grid-area: photo3;
         }
         
         .photo4 {
-            background-image: url(https://api.ws311471.remote.ac/images/bear.jpg);
+            background-image: url(https://api.ws311471.remote.ac/images/city/street_corner.jpg);
             grid-area: photo4;
         }
         
         .photo5 {
-            background-image: url(https://api.ws311471.remote.ac/images/bear.jpg);
+            background-image: url(https://api.ws311471.remote.ac/images/land/misty_forest.jpg);
             grid-area: photo5;
         }
         
         .photo6 {
-            background-image: url(https://api.ws311471.remote.ac/images/bear.jpg);
+            background-image: url(https://api.ws311471.remote.ac/images/land/mountain_clouds_minimalist.jpg);
             grid-area: photo6;
         }
         
         .photo7 {
-            background-image: url(https://api.ws311471.remote.ac/images/bear.jpg);
+            background-image: url(https://api.ws311471.remote.ac/images/land/snow_mountain_walkers.jpg);
             grid-area: photo7;
         }
         
         .photo8 {
-            background-image: url(https://api.ws311471.remote.ac/images/bear.jpg);
+            background-image: url(https://api.ws311471.remote.ac/images/land/snowy_mountain_trees.jpg);
             grid-area: photo8;
         }
     }
