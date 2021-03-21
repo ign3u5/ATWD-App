@@ -3,13 +3,14 @@
     display: grid;
     grid-template: 
     ". pageName ." 1fr
-    ". gallery ." 9fr
+    ". gallery ." minmax(35%, 9fr)
     "secondPage secondPage secondPage" 10fr /auto minmax(50%, auto) auto;
     column-gap: 3vw;
     row-gap: 3vh;
 
     .pageName {
         text-align: center;
+        align-self: center;
         grid-area: pageName;
     }
 
@@ -17,6 +18,7 @@
         grid-area: gallery;
         max-width: 1200px;
         justify-self: center;
+        align-self: center;
     }
 
     .secondPage {
@@ -27,6 +29,14 @@
         grid-template: 
         "title title title"
         "card1 card2 card3";
+        @media screen and (max-width: 680px) {
+            grid-template:
+            "title"
+            "card1"
+            "card2"
+            "card3";
+            row-gap: 1vh;
+        }
 
         .title {
             grid-area: title;

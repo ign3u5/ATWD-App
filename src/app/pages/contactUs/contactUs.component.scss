@@ -1,12 +1,15 @@
 .container {
-    height: auto;
+    height: 200%;
     display: grid;
     grid-template: 
-    "title" minmax(90vh, 1fr)
+    "title" minmax(50%, 1fr)
     "page-content" 1fr;
 
     .title {
         grid-area: title;
+        @media screen and (max-width: 680px) {
+            align-self:center;
+        }
     }
 
     .page-content {
@@ -15,12 +18,25 @@
         display: grid;
         align-items: center;
         justify-items: center;
+        gap: 3vh;
         grid-template: 
         "contact-content"
-        "map";
+        "map"
+        ".";
 
         .map {
             grid-area: map;
+            @media screen and (max-width: 680px) {
+                display: none;
+            }
+        }
+
+        .mobile-map {
+            display: none;
+            @media screen and (max-width: 680px) {
+                display: block;
+                grid-area: map;
+            }
         }
 
         .contact-content {
@@ -31,6 +47,12 @@
             display: grid;
             grid-template:
             "c-details c-form" 1fr / 1fr 2fr;
+
+            @media screen and (max-width: 680px) {
+                grid-template:
+                "c-details"
+                "c-form";
+            }
 
             .c-details {
                 grid-area: c-details;
@@ -51,6 +73,10 @@
                     display: grid;
                     gap: 2vw;
                     grid-template-columns: 1fr 1fr;
+
+                    @media screen and (max-width: 680px) {
+                        grid-template-columns: 1fr;
+                    }
                     
                     label {
                         display: block;
@@ -58,6 +84,10 @@
 
                     .full-width {
                         grid-column: 1 / 3;
+
+                        @media screen and (max-width: 680px) {
+                            grid-column: 1 / 2;
+                        }
                     }
     
                     input, button, textarea {

@@ -1,9 +1,14 @@
 .titleContainer{
+    height: 100%;
     text-align: center;
     display: grid;
     grid-template:
     ". . ." 30vh
     ". title ." / auto 30vw auto;
+    @media screen and (max-width: 680px) {
+        grid-template:
+        "title";
+    }
 }
 
 .title{

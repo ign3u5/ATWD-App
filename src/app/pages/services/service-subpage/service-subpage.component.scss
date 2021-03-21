@@ -7,6 +7,14 @@
     "card1 image1"
     "card2 image1" / 1fr 2fr;
 
+    @media screen and (max-width: 680px) {
+        grid-template:
+        "page-title"
+        "card1"
+        "image1"
+        "card2";
+    }
+
     .title {
         grid-area: page-title;
 

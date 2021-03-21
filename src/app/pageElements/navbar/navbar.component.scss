@@ -1,9 +1,6 @@
-/* Add a black background color to the top navigation */
-
 .topnav {
     overflow: hidden;
     padding-right: 20px;
-    margin-bottom: 3vh;
 }
   
 a {
@@ -26,13 +23,25 @@ a {
   }
 }
 
-@media screen and (max-width: 580px) {
+.burger-menu {
+  display: none;
+}
+
+@media screen and (max-width: 680px) {
   .topnav {
-    padding: 20px 10px !important;
+     padding: 10px 10px !important;
   }
   a {
+    display: none;
+    margin: 0;
+  }
+  .burger-menu {
+    float: none;
+    display: block;
+  }
+  a.show {
     float: none;
     display: block;
     text-align: left;
-    }
+  }
 }

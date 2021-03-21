@@ -2,11 +2,14 @@
     height: 600%;
     display: grid;
     grid-template: 
-    "title" 1fr
+    "title" minmax(17%, 1fr)
     "page-content" 5fr;
 
     .title {
         grid-area: title;
+        @media screen and (max-width: 680px) {
+            align-self: center;
+        }
     }
 
     .content {

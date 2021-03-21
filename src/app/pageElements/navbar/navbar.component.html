@@ -1,6 +1,7 @@
 <div class="topnav">
+    <a class="burger-menu" (click)="showMenu()">-</a>
     <login-form (StatusChange)="changeLoggedInState()"></login-form>
     <div *ngFor="let p of pages">
-        <a *ngIf="p.enabled" routerLink="{{ p.link }}" routerLinkActive="active">{{ p.name }}</a>
+        <a *ngIf="p.enabled" routerLink="{{ p.link }}" [ngClass]="{'show': showMobileMenu}" routerLinkActive="active">{{ p.name }}</a>
     </div>
 </div>

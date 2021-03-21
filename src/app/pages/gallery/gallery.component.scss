@@ -2,11 +2,14 @@
     height: 200%;
     display: grid;
     grid-template:
-    "title" 1fr
+    "title" minmax(50%, 1fr)
     "gallery" 1fr;
 
     .title {
         grid-area: title;
+        @media screen and (max-width: 680px) {
+            align-self: center;
+        }
     }
 
     .gallery {
@@ -15,6 +18,19 @@
         grid-template:
         "photo1 photo2 photo3 photo4"
         "photo5 photo6 photo7 photo8" / 1fr 1fr 1fr 1fr;
+        @media screen and (max-width: 680px) {
+            grid-template:
+            "photo1" 20vh
+            "photo2" 20vh
+            "photo3" 20vh
+            "photo4" 20vh
+            "photo5" 20vh
+            "photo6" 20vh
+            "photo7" 20vh
+            "photo8" 20vh
+            ".";
+            row-gap: 2vh;
+        }
         place-items: auto;
 
         [class*="photo"] {

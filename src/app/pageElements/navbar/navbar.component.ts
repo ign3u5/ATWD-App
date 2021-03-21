@@ -11,6 +11,7 @@ import { TokenService } from 'src/app/shared/services/token-service/token-servic
 })
 export class NavbarComponent {
     public pages: Page[];
+    public showMobileMenu = false;
     public authActionName = "Login";
     constructor(private tokenService: TokenService, private route: Router){
         this.pages = [
@@ -33,6 +34,11 @@ export class NavbarComponent {
                 this.route.navigateByUrl('/home');
             }
         }
+    }
+
+    showMenu()
+    {
+        this.showMobileMenu = !this.showMobileMenu;
     }
 }
 class Page {

@@ -4,39 +4,75 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    max-height: 100vh;
-    height: auto;
-    padding-left: 1vw;
-    padding-right: 1vw;
-    padding-bottom: 1vw;
     display: grid;
     grid-template: 
-    "navbar" 10vh 
-    "router-outlet" 86vh
-    "footer" 4vh / auto;
+    "wrapper" 100vh;
 
-    .navbar {
-        grid-area: navbar;
-    }
-    
-    .router-outlet {
-        grid-area: router-outlet;
-        justify-self: center;
-        overflow: auto;
-        width: 100%;
-        max-width: 1920px;
-    }
+    .wrapper {
+        grid-area: wrapper;
 
-    footer {
-        grid-area: footer;
-        text-align:center;
-        color: white;
-        padding: 1em;
+        padding-left: 1vw;
+        padding-right: 1vw;
+        display: grid;
+        grid-template: 
+        "navbar" 
+        "router-outlet" 
+        "footer" minmax(3rem, auto) / auto;
 
-        h4, a {
-            vertical-align: middle;
-            display: inline-block;
-            margin-right: 1rem;
+        .navbar {
+            grid-area: navbar;
+        }
+        
+        .router-outlet {
+            grid-area: router-outlet;
+            justify-self: center;
+            overflow: auto;
+            width: 100%;
+            max-width: 1920px;
+        }
+
+        footer {
+            margin-top: 0.5em;
+            grid-area: footer;
+            place-items: center;
+            display: grid;
+            grid-template:
+            " . copyright facebook instagram linkedin twitter . " / 30% auto auto auto auto auto 30%;
+
+            .copyright {
+                grid-area: copyright;
+                color: white;
+            }
+
+            .facebook {
+                grid-area: facebook;
+            }
+
+            .instagram {
+                grid-area: instagram;
+            }
+
+            .linkedin {
+                grid-area: linkedin;
+            }
+
+            .twitter {
+                grid-area: twitter;
+            }
+
+            @media screen and (max-width: 680px) {
+                padding: 0;
+                grid-template:
+                "facebook instagram linkedin twitter"
+                "copyright copyright copyright copyright";
+                justify-items: center;
+
+                .copyright {
+                    text-align: center;
+                    padding: 0.5em;
+                    display: block;
+                }
+            }
         }
     }
 }

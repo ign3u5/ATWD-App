@@ -1,12 +1,15 @@
 .container {
-    height: 200%;
+    height: 400%;
     display: grid;
     grid-template: 
-    "title" minmax(90vh, 1fr)
-    "page-content" 1fr;
+    "title" minmax(25%, 1fr)
+    "page-content" 3fr;
+
     .title {
         grid-area: title;
+        align-self: center;
     }
+
     .content {
         grid-area: page-content;
         display: grid;
@@ -15,6 +18,16 @@
         "card1 image1 image1"
         "image2 image2 card2"
         "card3 image3 image3" / 1fr 1fr 1fr;
+
+        @media screen and (max-width: 680px) {
+            grid-template:
+            "card1"
+            "image1"
+            "card2"
+            "image2"
+            "card3"
+            "image3";
+        }
 
         img {
             width: 100%;
