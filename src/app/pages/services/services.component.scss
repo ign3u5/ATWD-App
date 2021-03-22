@@ -16,6 +16,7 @@
         grid-area: page-content;
         display: grid;
         align-items: center;
+        row-gap: 3vh;
         grid-template:
         "graphic-design" 1fr
         "photography" 1fr
