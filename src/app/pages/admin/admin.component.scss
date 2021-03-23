@@ -1,3 +1,5 @@
+@use "src/app/shared/styles/colour";
+
 .container {
     height: 100%;
     display: grid;
@@ -24,6 +26,7 @@
             border-collapse: collapse;
             border-spacing: 0;
             width: 100%;
+            color: colour.$lightText;
         
             th, td {
                 text-align: left;
@@ -33,12 +36,12 @@
             tr {
                 &:nth-child(even)
                 {
-                    background-color: rgb(242, 242, 242);
+                    background-color: colour.$lightBackground;
                 }
         
                 &:nth-child(odd)
                 {
-                    background-color: rgba(242, 242, 242, 0.5)
+                    background-color: colour.GetDarkBackground(colour.$primary);
                 }
             }
         }

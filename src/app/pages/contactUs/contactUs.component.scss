@@ -1,3 +1,6 @@
+@use "src/app/shared/styles/screen";
+@use "src/app/shared/styles/colour";
+
 .container {
     height: 200%;
     display: grid;
@@ -7,7 +10,7 @@
 
     .title {
         grid-area: title;
-        @media screen and (max-width: 680px) {
+        @include screen.phone {
             align-self:center;
         }
     }
@@ -26,14 +29,14 @@
 
         .map {
             grid-area: map;
-            @media screen and (max-width: 680px) {
+            @include screen.phone {
                 display: none;
             }
         }
 
         .mobile-map {
             display: none;
-            @media screen and (max-width: 680px) {
+            @include screen.phone {
                 display: block;
                 grid-area: map;
             }
@@ -48,10 +51,12 @@
             grid-template:
             "c-details c-form" 1fr / 1fr 2fr;
 
-            @media screen and (max-width: 680px) {
+            @include screen.phone {
                 grid-template:
                 "c-details"
                 "c-form";
+
+                row-gap: 2vh;
             }
 
             .c-details {
@@ -66,35 +71,6 @@
     
             .c-form {
                 grid-area: c-form;
-                background: rgba(242, 242, 242, 0.5);
-                padding: 1em;
-    
-                form {
-                    display: grid;
-                    gap: 2vw;
-                    grid-template-columns: 1fr 1fr;
-
-                    @media screen and (max-width: 680px) {
-                        grid-template-columns: 1fr;
-                    }
-                    
-                    label {
-                        display: block;
-                    }
-
-                    .full-width {
-                        grid-column: 1 / 3;
-
-                        @media screen and (max-width: 680px) {
-                            grid-column: 1 / 2;
-                        }
-                    }
-    
-                    input, button, textarea {
-                        width: 100%;
-                        padding: 1em;
-                    }
-                }
             }
         }
     }

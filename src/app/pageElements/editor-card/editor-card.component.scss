@@ -1,7 +1,9 @@
+@use "src/app/shared/styles/colour";
+
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
-    background-color: rgba(255, 255, 255, 0.2);
-    color: rgb(0, 0, 0);
+    background-color: colour.GetBackground(colour.$tertiary);
+    color: colour.$lightText;
     transition: 0.3s;
     padding: 5%;
     &:hover {

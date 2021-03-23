@@ -1,3 +1,5 @@
+@use "src/app/shared/styles/colour";
+
 .topnav {
     overflow: hidden;
     padding-right: 20px;
@@ -6,7 +8,7 @@
 a {
   border-radius: 5px;
   float: right;
-  color: #000000;
+  color: colour.$lightText;
   text-align: center;
   padding: 14px 16px;
   margin: 10px;
@@ -14,12 +16,12 @@ a {
   font-size: 17px;
   cursor: pointer;
   &:hover{
-    background-color: #ddd;
-    color: black;
+    background-color: colour.$quaternary;
+    color: colour.$darkText;
   }
   &.active{
-    background-color: #000000;
-    color: white;
+    background-color: colour.GetDark(colour.$primary);
+    color: colour.$lightText;
   }
 }
 

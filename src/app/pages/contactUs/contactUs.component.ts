@@ -7,7 +7,7 @@ import { HttpDataService } from "src/app/shared/services/httpDataService";
 @Component({
     selector: 'contactUs',
     templateUrl: './contactUs.component.html',
-    styleUrls: ['./contactUs.component.scss']
+    styleUrls: ['./contactUs.component.scss','../../shared/styles/form.scss']
 })
 export class ContactUsComponent {
     public pageName: string;

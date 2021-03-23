@@ -25,6 +25,7 @@
 
     .card1{
         grid-area: card1;
+        height: 100%;
     }
 
     .card2{
@@ -32,8 +33,7 @@
     }
 
     .image {
-        width: 100%;
-        max-width: 800px;
+        max-height: 60vh;
         grid-area: image1;
         justify-self: center;
     }
