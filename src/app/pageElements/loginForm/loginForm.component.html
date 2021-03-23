@@ -1,5 +1,5 @@
 <div (click)="buttonAction()">
-<a >{{ buttonName }}</a>
+<a [ngClass]="{'show': showMobileMenu}">{{ buttonName }}</a>
 </div>
 <div class="modal" id="loginForm" [style.display]="isVisible ? 'block' : 'none'">
     <div class="login-form modal-content animate">
