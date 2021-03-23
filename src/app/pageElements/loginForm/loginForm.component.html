@@ -1,18 +1,20 @@
 <div (click)="buttonAction()">
-<a >{{ buttonName }}</a>
+<a [ngClass]="{'show': showMobileMenu}">{{ buttonName }}</a>
 </div>
 <div class="modal" id="loginForm" [style.display]="isVisible ? 'block' : 'none'">
-    <form [formGroup] = "loginForm" class="modal-content animate" (ngSubmit)="onSubmit()">
-        <span class="close" title="Close Login" (click)="isVisible = false">&times;</span>
-        <label>
-            Username:
-            <input type="text" formControlName="username">
-        </label>
-        <label>
-            Password:
-            <input type="password" formControlName="password">
-        </label>
-        <button type="submit">Login</button>
-    </form>
+    <div class="login-form modal-content animate">
+        <form [formGroup] = "loginForm" (ngSubmit)="onSubmit()">
+            <span class="close" title="Close Login" (click)="isVisible = false">&times;</span>
+            <label>
+                Username:
+                <input type="text" formControlName="username">
+            </label>
+            <label>
+                Password:
+                <input type="password" formControlName="password">
+            </label>
+            <button type="submit">Login</button>
+        </form>
+    </div>
 </div>
 

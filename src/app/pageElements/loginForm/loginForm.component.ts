@@ -16,6 +16,7 @@ export class LoginFormComponent{
         password: new FormControl('')
     });
 
+    @Input() showMobileMenu: boolean;
     @Output() StatusChange = new EventEmitter();
 
     public isVisible = false;
