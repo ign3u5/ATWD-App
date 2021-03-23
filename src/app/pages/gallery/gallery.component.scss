@@ -1,3 +1,6 @@
+@use "src/app/shared/styles/colour";
+@use "src/app/shared/styles/screen";
+
 .container {
     height: 200%;
     display: grid;
@@ -7,7 +10,7 @@
 
     .title {
         grid-area: title;
-        @media screen and (max-width: 680px) {
+        @include screen.phone {
             align-self: center;
         }
     }
@@ -18,7 +21,7 @@
         grid-template:
         "photo1 photo2 photo3 photo4"
         "photo5 photo6 photo7 photo8" / 1fr 1fr 1fr 1fr;
-        @media screen and (max-width: 680px) {
+        @include screen.phone {
             grid-template:
             "photo1" 20vh
             "photo2" 20vh
@@ -46,7 +49,7 @@
             editorc {
                 padding: 5%;
                 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
-                background-color: rgba(255, 255, 255, 0.5);
+                background-color: colour.GetDarkBackground(colour.$quaternary);
             }
           }
 
