@@ -6,15 +6,16 @@ $tertiary: #ff6f69;
 $quaternary: #ffcc5c;
 $quinary: #88d8b0;
 
-$lightnessPrecision: 20%;
+$lightPrecision: 20%;
+$darkPrecision: 30%;
 $alpha: 0.8;
 
 @function GetLight($colour) {
-    @return color.adjust($colour, $lightness: $lightnessPrecision);
+    @return color.adjust($colour, $lightness: $lightPrecision);
 }
 
 @function GetDark($colour) {
-    @return color.adjust($colour, $lightness: -$lightnessPrecision);
+    @return color.adjust($colour, $lightness: -$darkPrecision);
 }
 
 @function GetBackground($colour) {

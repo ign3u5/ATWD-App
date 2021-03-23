@@ -9,6 +9,11 @@ import { EditorFactoryService } from 'src/app/shared/services/editor-factory/edi
   styleUrls: ['./editor-card.component.scss']
 })
 export class EditorCardComponent{
+  @Input() pageName: string;
+  @Input() cardId: number;
+  @Input() options: string;
+  @Input() backgroundColour: string;
+
   public headerOptions: EditorType;
   public bodyOptions: EditorType;
 
@@ -31,8 +36,4 @@ export class EditorCardComponent{
       this.bodyOptions = EditorType.List;
     }
   }
-
-  @Input() pageName: string;
-  @Input() cardId: number;
-  @Input() options: string;
 }

@@ -21,7 +21,7 @@
         display: grid;
         grid-template: 
         "navbar" 
-        "router-outlet" 
+        "router-outlet"
         "footer" minmax(3rem, auto) / auto;
 
         .navbar {

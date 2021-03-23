@@ -2,8 +2,8 @@
 
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
-    background-color: colour.GetBackground(colour.$tertiary);
     color: colour.$lightText;
+    background-color: colour.$lightBackground;
     transition: 0.3s;
     padding: 5%;
     &:hover {
@@ -14,4 +14,26 @@
         width: 30%;
         margin-bottom: 5px;
     }
+}
+
+.primary {
+    background-color: colour.GetDarkBackground(colour.$primary);
+}
+
+.secondary {
+    background-color: colour.GetBackground(colour.$secondary);
+    color: colour.$darkText;
+}
+
+.tertiary {
+    background-color: colour.GetBackground(colour.$tertiary);
+}
+
+.quaternary {
+    background-color: colour.GetBackground(colour.$quaternary);
+    color: colour.$darkText;
+}
+
+.quinary {
+    background-color: colour.GetDarkBackground(colour.$quinary);
 }

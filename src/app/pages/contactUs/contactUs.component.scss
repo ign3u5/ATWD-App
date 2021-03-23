@@ -62,7 +62,7 @@
             .c-details {
                 grid-area: c-details;
                 padding: 1em;
-                background: rgb(5, 158, 112);
+                background: colour.GetDarkBackground(colour.$primary);
             }
 
             ul {
