@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-
+@font-face {
+  font-family: "firasans";
+  src: url("/assets/fonts/Fira_Sans/FiraSans-Regular.ttf");
+}
 
 .image {
   width: auto;
@@ -13,6 +16,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "firasans";
 
   /* Works on Firefox */
   scrollbar-width: thin;

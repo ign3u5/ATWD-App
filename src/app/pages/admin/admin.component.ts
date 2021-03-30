@@ -116,6 +116,9 @@ export class AdminComponent implements OnInit {
       .subscribe(() => {
         this.addNewUserToTable(this.newUser);
         this.newUserForm.reset();
+        let message = `${this.newUser.firstName}'s profile has been successfully created`;
+        console.log(message);
+        alert(message);
       });
   }
 

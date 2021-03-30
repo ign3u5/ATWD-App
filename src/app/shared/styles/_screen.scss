@@ -11,5 +11,11 @@
 };
 
 @mixin portable-device {
-    
+    @include phone {
+        @content
+    };
+
+    @include tablet {
+        @content
+    };
 }
