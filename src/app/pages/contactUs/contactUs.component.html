@@ -25,22 +25,40 @@
             </div>
             <div class="c-form">
                 <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-                    <p>
-                        <label>Name:</label>
+                    <label>
+                        Name:
                         <input type="text" formControlName="name" required>
-                    </p>
-                    <p>
-                        <label>Company (optional):</label>
+                        <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                            <div *ngIf="name.errors.required" class="warn">
+                                Name is required.
+                            </div>
+                        </div>
+                    </label>
+                    <label>
+                        Company (optional):
                         <input type="text" formControlName="company">
-                    </p>
-                    <p class="full-width">
-                        <label>Email:</label>
+                    </label>
+                    <label class="full-width">
+                        Email:
                         <input type="text" formControlName="email" required>
-                    </p>
-                    <p class="full-width">
-                        <label>Message:</label>
+                        <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                            <div *ngIf="email.errors.required" class="warn">
+                                Email is required.
+                            </div>
+                            <div *ngIf="email.errors.email" class="warn">
+                                Invalid email entered.
+                            </div>
+                        </div>
+                    </label>
+                    <label class="full-width">
+                        Message:
                         <textarea type="text" formControlName="message" required></textarea>
-                    </p>
+                        <div *ngIf="message.invalid && (message.dirty || message.touched)">
+                            <div *ngIf="message.errors.required" class="warn">
+                                Message is required.
+                            </div>
+                        </div>
+                    </label>
                     <button class="full-width" type="submit" [disabled]="!contactForm.valid">Send</button>
                 </form>
             </div>

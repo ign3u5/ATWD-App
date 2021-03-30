@@ -10,6 +10,11 @@ form {
     @include screen.phone {
         grid-template-columns: 1fr;
     }
+
+    .warn {
+        color: colour.$tertiary;
+        background-color: colour.$darkBackground;
+    }
     
     label {
         display: block;

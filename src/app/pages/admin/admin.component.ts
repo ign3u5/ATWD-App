@@ -26,6 +26,12 @@ export class AdminComponent implements OnInit {
     email: ['', [Validators.required, Validators.email]],
 });
 
+  public get username() { return this.newUserForm.get('username'); }
+  public get password() { return this.newUserForm.get('password'); }
+  public get firstName() { return this.newUserForm.get('firstName'); }
+  public get lastName() { return this.newUserForm.get('lastName'); }
+  public get email() { return this.newUserForm.get('email'); }
+
   constructor(private httpClient: HttpDataService, private formBuilder: FormBuilder) {
     this.loadUsers();
   }
