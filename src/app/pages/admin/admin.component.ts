@@ -128,22 +128,32 @@ export class AdminComponent implements OnInit {
   }
 
   onSave(index: number) {
-    console.log(`Updated user ${JSON.stringify(this.updatedUsers[index])}`);
-    this.httpClient.updateUser(this.updatedUsers[index])
-      .subscribe(() => {
-        console.log(`${this.updatedUsers[index].username} has been successfully saved`);
-        alert(`${this.updatedUsers[index].username}'s profile has been saved successfully`);
-      })
-    this.isUserUpdated[index] = false;
+    if (confirm(`Are you sure you want to save ${this.updatedUsers[index].username}?`)) 
+    {
+      console.log(`Updating user ${JSON.stringify(this.updatedUsers[index])}`);
+      this.httpClient.updateUser(this.updatedUsers[index])
+        .subscribe(() => {
+          console.log(`${this.updatedUsers[index].username} has been successfully saved`);
+          alert(`${this.updatedUsers[index].username}'s profile has been saved successfully`);
+        })
+      this.isUserUpdated[index] = false;
+    }
+    else
+      console.log(`${this.updatedUsers[index].username} has not been saved`);
   }
 
   onDelete(index: number) {
-    console.log(`Deleted user ${this.updatedUsers[index].username}`);
-    this.httpClient.deleteUser(this.updatedUsers[index].username)
-      .subscribe(() => {
-        console.log(`${this.updatedUsers[index].username} has been successfully deleted`);
-        alert(`${this.updatedUsers[index].username}'s profile has been deleted successfully`);
-        this.loadUsers();
-      });
+    if (confirm(`Are you sure you want to delete ${this.updatedUsers[index].username}?`)) 
+    {
+      console.log(`Deleting user ${this.updatedUsers[index].username}`);
+      this.httpClient.deleteUser(this.updatedUsers[index].username)
+        .subscribe(() => {
+          console.log(`${this.updatedUsers[index].username} has been successfully deleted`);
+          alert(`${this.updatedUsers[index].username}'s profile has been deleted successfully`);
+          this.loadUsers();
+        });
+    }
+    else 
+      console.log(`${this.updatedUsers[index].username} has not been deleted`);
   }
 }

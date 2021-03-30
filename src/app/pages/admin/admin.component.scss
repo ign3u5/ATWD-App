@@ -20,6 +20,22 @@
         grid-template: 
         "management-table buttons" / auto minmax(40px, auto);
 
+        .btn {
+            margin: -16px;
+            padding: 16px;
+            cursor: pointer;
+
+            &.warn:hover {
+                background-color: colour.$darkBackground;
+                color: colour.$tertiary;
+            }
+            
+            &.happy:hover {
+                background-color: colour.$darkBackground;
+                color: colour.$primary;
+            }
+        }
+
         table {
             grid-area: management-table;
             justify-self: center;
