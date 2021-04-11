@@ -6,22 +6,10 @@
         <div class="contact-content">
             <div class="c-details">
                 <h3>Contact details</h3>
-                <ul>
-                    <li>Weston College, Weston-super-mare, BS23 2AL</li>
-                    <li>01242 807 349</li>
-                    <li>info@skylabdesign.co.uk</li>
-                </ul>
+                <editorc  [pageName]="pageName" editorId="2" [optionsType]="listOptions"></editorc>
                 <br>
                 <h3>Opening Hours</h3>
-                <ul>
-                    <li>Monday 09:00 - 17:00</li>
-                    <li>Tuesday 09:00 - 17:00</li>
-                    <li>Wednesday 09:00 - 17:00</li>
-                    <li>Thursday 09:00 - 17:00</li>
-                    <li>Friday 09:00 - 17:00</li>
-                    <li>Saturday Closed</li>
-                    <li>Sunday Closed</li>
-                </ul>
+                <editorc  [pageName]="pageName" editorId="3" [optionsType]="listOptions"></editorc>
             </div>
             <div class="c-form">
                 <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">

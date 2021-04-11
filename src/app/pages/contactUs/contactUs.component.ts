@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { CMSStorageService } from "src/app/shared/cms/cmsStorageService";
 import { ContactFormData } from "src/app/shared/models/contact-form-data";
+import { EditorType } from "src/app/shared/models/editor-type";
 import { HttpDataService } from "src/app/shared/services/httpDataService";
 
 @Component({
@@ -21,6 +22,7 @@ export class ContactUsComponent {
     public get name() { return this.contactForm.get('name'); }
     public get email() { return this.contactForm.get('email'); }
     public get message() { return this.contactForm.get('message'); }
+    public listOptions = EditorType.List;
 
     constructor(private cmsService: CMSStorageService, private formBuilder: FormBuilder, private httpClient: HttpDataService){
         this.cmsService.loadPage("contactUs").subscribe(pageName => this.pageName = pageName);
