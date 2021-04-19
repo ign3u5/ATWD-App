@@ -24,6 +24,7 @@ import { EditorCardComponent } from './pageElements/editor-card/editor-card.comp
 import { PageTitleComponent } from './pageElements/page-title/page-title.component';
 import { GraphicsDesignComponent } from './pages/services/service-subpage/service-subpage.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { AnimatedCardComponent } from './pageElements/animated-card/animated-card.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AdminComponent } from './pages/admin/admin.component';
     EditorCardComponent,
     PageTitleComponent,
     GraphicsDesignComponent,
-    AdminComponent
+    AdminComponent,
+    AnimatedCardComponent
   ],
   imports: [
     BrowserModule,

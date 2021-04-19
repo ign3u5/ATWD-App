@@ -25,7 +25,12 @@
         grid-template: 
         "contact-content"
         "map"
+        "animated-card"
         ".";
+
+        animated-card {
+            grid-area: animated-card;
+        }
 
         .map {
             grid-area: map;
