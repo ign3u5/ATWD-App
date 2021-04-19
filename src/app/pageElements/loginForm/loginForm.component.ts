@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from "@angular/core";
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/shared/services/authenticationService';
 import { HttpDataService } from 'src/app/shared/services/httpDataService';
 import { StorageService } from 'src/app/shared/services/storageService';
@@ -11,10 +11,13 @@ import { TokenService } from "src/app/shared/services/token-service/token-servic
     styleUrls: ['./loginForm.component.scss', '../navbar/navbar.component.scss', '../../shared/styles/form.scss']
 })
 export class LoginFormComponent{
-    loginForm = new FormGroup({
-        username: new FormControl(''),
-        password: new FormControl('')
+    public loginForm = this.formBuilder.group({
+        username: ['', Validators.required],
+        password: ['', Validators.required],
     });
+
+    public get username() { return this.loginForm.get('username'); }
+    public get password() { return this.loginForm.get('password'); }
 
     @Input() showMobileMenu: boolean;
     @Output() StatusChange = new EventEmitter();
@@ -22,7 +25,7 @@ export class LoginFormComponent{
     public isVisible = false;
     public buttonName: string;
     public buttonAction: () => void;
-    constructor(private client: HttpDataService, private storage: StorageService, private tokenService: TokenService)
+    constructor(private formBuilder: FormBuilder, private client: HttpDataService, private storage: StorageService, private tokenService: TokenService)
     {
         if (tokenService.TokenIsValid)
         {

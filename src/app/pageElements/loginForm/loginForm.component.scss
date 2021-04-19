@@ -34,6 +34,18 @@
                 opacity: 0.8;
             }
         }
+        .disabled-button {
+            background-color: colour.$disabledBackground;
+            color: colour.$disabledText;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            &:hover{
+                opacity: 0.8;
+            }
+        }
     }
 }
 
