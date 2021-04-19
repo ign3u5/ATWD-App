@@ -23,10 +23,9 @@
         justify-items: center;
         gap: 3vh;
         grid-template: 
-        "contact-content"
-        "map"
-        "animated-card"
-        ".";
+        "contact-content contact-content"
+        "map animated-card"
+        ". .";
 
         animated-card {
             grid-area: animated-card;
