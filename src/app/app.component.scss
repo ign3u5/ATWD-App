@@ -1,22 +1,27 @@
+@use "src/app/shared/styles/colour";
+
 .backgroundImage {
     background-image: url("shared/images/blue_lake_man_background.jpg");
     background-position:center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+
     display: grid;
     grid-template: 
     "wrapper" 100vh;
 
     .wrapper {
         grid-area: wrapper;
+        background-color: colour.$darkBackground;
+        color: colour.$lightText;
 
         padding-left: 1vw;
         padding-right: 1vw;
         display: grid;
         grid-template: 
         "navbar" 
-        "router-outlet" 
+        "router-outlet"
         "footer" minmax(3rem, auto) / auto;
 
         .navbar {

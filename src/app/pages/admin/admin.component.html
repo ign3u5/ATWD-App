@@ -15,8 +15,8 @@
                 <td contenteditable (input)="onFirstNameUpdate($event.target.innerHTML, i)">{{ user.firstName }}</td>
                 <td contenteditable (input)="onLastNameUpdate($event.target.innerHTML, i)">{{ user.lastName }}</td>
                 <td contenteditable (input)="onEmailUpdate($event.target.innerHTML, i)">{{ user.email }}</td>
-                <td><div *ngIf="isUserUpdated[i] && isUserValid[i]" (click)="onSave(i)">Save</div></td>
-                <td><div *ngIf='user.privilegeLevel/3 !=1' (click)="onDelete(i)">Delete</div></td>
+                <td><div class="happy btn" *ngIf="isUserUpdated[i] && isUserValid[i]" (click)="onSave(i)">Save</div></td>
+                <td><div class="warn btn" *ngIf='user.privilegeLevel/3 !=1' (click)="onDelete(i)">Delete</div></td>
             </tr>
         </table>
         <div class="controls form">
@@ -24,22 +24,50 @@
                 <label>
                     Username:
                     <input type="text" formControlName="username" required>
+                    <div *ngIf="username.invalid && (username.dirty || username.touched)">
+                        <div *ngIf="username.errors.required" class="warn">
+                            Username is required.
+                        </div>
+                    </div>
                 </label>
                 <label>
                     Password:
-                    <input type="password" formControlName="password">
+                    <input type="password" formControlName="password" required>
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                        <div *ngIf="password.errors.required" class="warn">
+                            Password is required.
+                        </div>
+                    </div>
                 </label>
                 <label>
                     First Name:
                     <input type="text" formControlName="firstName" required>
+                    <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+                        <div *ngIf="firstName.errors.required" class="warn">
+                            First name is required.
+                        </div>
+                    </div>
                 </label>
                 <label>
                     Last Name:
                     <input type="text" formControlName="lastName" required>
+                    <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                        <div *ngIf="lastName.errors.required" class="warn">
+                            Last name is required.
+                        </div>
+                    </div>
                 </label>
                 <label class="full-width">
                     Email:
                     <input type="text" formControlName="email" required>
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                        <div *ngIf="email.errors.required" class="warn">
+                            Email is required.
+                        </div>
+                        <div *ngIf="email.errors.email" class="warn">
+                            Invalid email entered.
+                        </div>
+                    </div>
                 </label>
                 <button class="full-width" type="submit" [disabled]="!newUserForm.valid">Create</button>
             </form>

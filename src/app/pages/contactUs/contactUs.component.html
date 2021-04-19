@@ -6,45 +6,52 @@
         <div class="contact-content">
             <div class="c-details">
                 <h3>Contact details</h3>
-                <ul>
-                    <li>Weston College, Weston-super-mare, BS23 2AL</li>
-                    <li>01242 807 349</li>
-                    <li>info@skylabdesign.co.uk</li>
-                </ul>
+                <editorc  [pageName]="pageName" editorId="2" [optionsType]="listOptions"></editorc>
                 <br>
                 <h3>Opening Hours</h3>
-                <ul>
-                    <li>Monday 09:00 - 17:00</li>
-                    <li>Tuesday 09:00 - 17:00</li>
-                    <li>Wednesday 09:00 - 17:00</li>
-                    <li>Thursday 09:00 - 17:00</li>
-                    <li>Friday 09:00 - 17:00</li>
-                    <li>Saturday Closed</li>
-                    <li>Sunday Closed</li>
-                </ul>
+                <editorc  [pageName]="pageName" editorId="3" [optionsType]="listOptions"></editorc>
             </div>
             <div class="c-form">
                 <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-                    <p>
-                        <label>Name:</label>
+                    <label>
+                        Name:
                         <input type="text" formControlName="name" required>
-                    </p>
-                    <p>
-                        <label>Company (optional):</label>
+                        <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                            <div *ngIf="name.errors.required" class="warn">
+                                Name is required.
+                            </div>
+                        </div>
+                    </label>
+                    <label>
+                        Company (optional):
                         <input type="text" formControlName="company">
-                    </p>
-                    <p class="full-width">
-                        <label>Email:</label>
+                    </label>
+                    <label class="full-width">
+                        Email:
                         <input type="text" formControlName="email" required>
-                    </p>
-                    <p class="full-width">
-                        <label>Message:</label>
+                        <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                            <div *ngIf="email.errors.required" class="warn">
+                                Email is required.
+                            </div>
+                            <div *ngIf="email.errors.email" class="warn">
+                                Invalid email entered.
+                            </div>
+                        </div>
+                    </label>
+                    <label class="full-width">
+                        Message:
                         <textarea type="text" formControlName="message" required></textarea>
-                    </p>
+                        <div *ngIf="message.invalid && (message.dirty || message.touched)">
+                            <div *ngIf="message.errors.required" class="warn">
+                                Message is required.
+                            </div>
+                        </div>
+                    </label>
                     <button class="full-width" type="submit" [disabled]="!contactForm.valid">Send</button>
                 </form>
             </div>
         </div>
+        <animated-card></animated-card>
         <div class="map">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14097.780576268011!2d-2.9996278493616577!3d51.34498567268172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4871ff2aac684369%3A0xa2f6ecd9a500a734!2sWeston%20College!5e0!3m2!1sen!2suk!4v1616338334382!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>

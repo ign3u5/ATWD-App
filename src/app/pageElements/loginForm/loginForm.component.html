@@ -8,12 +8,22 @@
             <label>
                 Username:
                 <input type="text" formControlName="username">
+                <div *ngIf="username.invalid && (username.dirty || username.touched)">
+                    <div *ngIf="username.errors.required" class="warn">
+                        Username is required.
+                    </div>
+                </div>
             </label>
             <label>
                 Password:
                 <input type="password" formControlName="password">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                    <div *ngIf="password.errors.required" class="warn">
+                        Password is required.
+                    </div>
+                </div>
             </label>
-            <button type="submit">Login</button>
+            <button type="submit" [ngClass]="{ 'disabled-button': !loginForm.valid }" [disabled]="!loginForm.valid">Login</button>
         </form>
     </div>
 </div>

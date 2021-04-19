@@ -1,24 +1,39 @@
-.form {
-    grid-area: c-form;
-    background: rgba(242, 242, 242, 0.5);
+@use "src/app/shared/styles/colour";
+@use "src/app/shared/styles/screen";
+
+form {
+    display: grid;
+    gap: 2vw;
+    grid-template-columns: 1fr 1fr;
     padding: 1em;
+    background-color: colour.$lightBackground;;
+    @include screen.phone {
+        grid-template-columns: 1fr;
+    }
 
-    form {
-        display: grid;
-        gap: 2vw;
-        grid-template-columns: 1fr 1fr;
-        
-        label {
-            display: block;
-        }
+    .warn {
+        color: colour.$tertiary;
+        background-color: colour.$darkBackground;
+    }
+    
+    label {
+        display: block;
+    }
 
-        .full-width {
-            grid-column: 1 / 3;
-        }
+    .full-width {
+        grid-column: 1 / 3;
 
-        input, button, textarea {
-            width: 100%;
-            padding: 1em;
+        @include screen.phone {
+            grid-column: 1 / 2;
         }
+    }
+
+    button {
+        background-color: colour.GetLight(colour.$tertiary);
+    }
+
+    input, button, textarea {
+        width: 100%;
+        padding: 1em;
     }
 }

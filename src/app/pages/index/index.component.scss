@@ -1,25 +1,37 @@
+@use "src/app/shared/styles/colour";
+
 .container {
     height: 200%;
     display: grid;
     grid-template: 
-    ". pageName ." 1fr
-    ". gallery ." minmax(35%, 9fr)
-    "secondPage secondPage secondPage" 10fr /auto minmax(50%, auto) auto;
+    ". landingPage ." minmax(50%, 1fr)
+    "secondPage secondPage secondPage" 1fr /auto minmax(50%, auto) auto;
     column-gap: 3vw;
     row-gap: 3vh;
 
-    .pageName {
-        text-align: center;
-        align-self: center;
-        grid-area: pageName;
+    .landingPage {
+        grid-area: landingPage;
+
+        display: grid;
+        row-gap: 3vh;
+        grid-template: 
+        "pageName" 1fr
+        "gallery" minmax(35%, 9fr);
+
+        .pageName {
+            text-align: center;
+            align-self: center;
+            grid-area: pageName;
+        }
+    
+        .gallery {
+            grid-area: gallery;
+            max-width: 90vh;
+            justify-self: center;
+            align-self: center;
+        }
     }
 
-    .gallery {
-        grid-area: gallery;
-        max-width: 90vh;
-        justify-self: center;
-        align-self: center;
-    }
 
     .secondPage {
         grid-area: secondPage;

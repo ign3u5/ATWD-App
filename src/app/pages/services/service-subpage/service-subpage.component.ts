@@ -10,6 +10,7 @@ import { EditorType } from 'src/app/shared/models/editor-type';
 export class GraphicsDesignComponent implements OnInit {
   @Input() page: string;
   @Input() imageSrc: string;
+  @Input() backgroundColour: string;
   public pageName: string;
   public titleOptions = EditorType.Title;
 

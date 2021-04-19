@@ -6,23 +6,37 @@
     padding: 1em;
 
     form {
+        background-color: colour.GetDark(colour.$primary);
+        display: block;
         input{
             width: 100%;
             padding: 12px 20px;
             margin: 8px 0;
             display: inline-block;
             box-sizing: border-box;
-            border: 3px solid #ccc;
+            border: 3px solid colour.$darkBackground;
             -webkit-transition: 0.5s;
             transition: 0.5s;
             outline: none;
             &:focus{
-                border: 3px solid #555;
+                border: 3px solid colour.$lightBackground;
             }
         }
         button {
-            background-color: colour.$green;
+            background-color: colour.$tertiary;
             color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            &:hover{
+                opacity: 0.8;
+            }
+        }
+        .disabled-button {
+            background-color: colour.$disabledBackground;
+            color: colour.$disabledText;
             padding: 14px 20px;
             margin: 8px 0;
             border: none;
@@ -38,7 +52,7 @@
 .cancelBtn {
     width: auto;
     padding: 10px 18px;
-    background-color: #f44336;
+    background-color: colour.GetDark(colour.$tertiary);
 }
 span.psw {
     float: right;
@@ -52,7 +66,7 @@ span.psw {
     font-size: 35px;
     font-weight: bold;
     &:hover, &:focus {
-        color: red;
+        color: colour.GetDark(colour.$tertiary);
         cursor: pointer;
     }
 }
@@ -73,9 +87,9 @@ span.psw {
 }
   
 .modal-content {
-    background-color: #fefefe;
+    background-color: colour.GetDark(colour.$primary);
     margin: 5% auto 15% auto;
-    border: 1px solid #888;
+    border: 1px solid colour.GetDark(colour.$primary);
     max-width: 20rem; 
     @include screen.phone {
         width: 90%;

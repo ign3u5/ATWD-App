@@ -1,1 +1,40 @@
-$green: rgb(5, 158, 112);
+@use "sass:color";
+
+$primary: #96ceb4;
+$secondary: #ffeead;
+$tertiary: #ff6f69;
+$quaternary: #ffcc5c;
+$quinary: #88d8b0;
+
+$lightPrecision: 20%;
+$darkPrecision: 30%;
+$alpha: 0.8;
+
+@function GetLight($colour) {
+    @return color.adjust($colour, $lightness: $lightPrecision);
+}
+
+@function GetDark($colour) {
+    @return color.adjust($colour, $lightness: -$darkPrecision);
+}
+
+@function GetBackground($colour) {
+    @return color.change($colour, $alpha: $alpha);
+}
+
+@function GetLightBackground($colour) {
+    @return color.change(GetLight($colour), $alpha: $alpha);
+}
+
+@function GetDarkBackground($colour) {
+    @return color.change(GetDark($colour), $alpha: $alpha);
+}
+
+$lightText: rgb(255, 255, 255);
+$darkText: rgb(0, 0, 0);
+
+$disabledBackground: rgb(121, 121, 121);
+$disabledText: rgb(218, 218, 218);
+
+$darkBackground: rgba(0, 0, 0, 0.4);
+$lightBackground: rgba(242, 242, 242, 0.4);

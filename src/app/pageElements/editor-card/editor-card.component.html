@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" [ngClass]="{'primary': backgroundColour=='primary', 'secondary': backgroundColour=='secondary', 'tertiary': backgroundColour=='tertiary', 'quaternary': backgroundColour=='quaternary', 'quinary': backgroundColour=='quinary'}">
       <h2><editorc [pageName]="pageName" [optionsType]="headerOptions" [editorId]="HeaderId"></editorc></h2> 
       <div class="hl"></div>
 <br>

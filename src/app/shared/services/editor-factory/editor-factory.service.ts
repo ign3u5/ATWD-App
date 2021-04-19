@@ -36,7 +36,6 @@ export class EditorFactoryService {
   getBodyOptions(): SetupOptions{
     let bodyOptions = new StandardEditor();
 
-    bodyOptions.quickbars_insert_toolbar = "quicktable image media codesample";
     bodyOptions.quickbars_selection_toolbar = "bold italic underline | quicklink | forecolor backcolor";
     bodyOptions.contextmenu = "undo redo | inserttable | cell row column deletetable | help";
     return bodyOptions;
@@ -45,7 +44,6 @@ export class EditorFactoryService {
   getListOptions(): SetupOptions{
     let bodyOptions = new StandardEditor();
 
-    bodyOptions.quickbars_insert_toolbar = "quicktable image media codesample";
     bodyOptions.quickbars_selection_toolbar = "bold italic underline | quicklink | forecolor backcolor | bullist";
     bodyOptions.contextmenu = "undo redo | inserttable | cell row column deletetable | help";
     return bodyOptions;

@@ -16,6 +16,7 @@
         grid-area: page-content;
         display: grid;
         gap: 2vw 2vh;
+        place-items: center;
         grid-template:
         "card1 image1 image1"
         "image2 image2 card2"
@@ -31,13 +32,8 @@
             "image3";
         }
 
-        img {
-            width: 100%;
-        }
-
         [class*="image"] {
-            align-self: center;
-
+            place-self: center;
         }
 
         [class*="card"] {

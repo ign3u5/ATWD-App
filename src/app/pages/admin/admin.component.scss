@@ -1,3 +1,6 @@
+@use "src/app/shared/styles/colour";
+@use "src/app/shared/styles/screen";
+
 .container {
     height: 100%;
     display: grid;
@@ -6,9 +9,17 @@
     "title ." 1fr
     "user-management user-management" 3fr;
 
+    @include screen.portable-device {
+        grid-template: 
+        "title ." auto
+        "user-management" 1fr;
+    }
+
     .title {
         grid-area: title;
         justify-self: center;
+        position: sticky;
+        left: 0;
     }
 
     .user-management {
@@ -16,7 +27,29 @@
         display: grid;
         gap: 2vw;
         grid-template: 
-        "management-table buttons" / auto minmax(40px, auto);
+        "management-table user-form" / auto minmax(40px, auto);
+
+        @include screen.portable-device {
+            grid-template:
+            "management-table"
+            "user-form";
+        }
+
+        .btn {
+            margin: -16px;
+            padding: 16px;
+            cursor: pointer;
+
+            &.warn:hover {
+                background-color: colour.$darkBackground;
+                color: colour.$tertiary;
+            }
+            
+            &.happy:hover {
+                background-color: colour.$darkBackground;
+                color: colour.$primary;
+            }
+        }
 
         table {
             grid-area: management-table;
@@ -24,6 +57,7 @@
             border-collapse: collapse;
             border-spacing: 0;
             width: 100%;
+            color: colour.$lightText;
         
             th, td {
                 text-align: left;
@@ -33,19 +67,23 @@
             tr {
                 &:nth-child(even)
                 {
-                    background-color: rgb(242, 242, 242);
+                    background-color: colour.$lightBackground;
                 }
         
                 &:nth-child(odd)
                 {
-                    background-color: rgba(242, 242, 242, 0.5)
+                    background-color: colour.GetDarkBackground(colour.$primary);
                 }
             }
         }
     
         .controls {
-            grid-area: buttons;
+            grid-area: user-form;
             align-self: start;
+            position: sticky;
+            left: 0;
+            max-width: 94vw;
+            padding-right: 2px;
         }
     }
 
