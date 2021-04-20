@@ -27,8 +27,18 @@
         "map animated-card"
         ". .";
 
+        @include screen.portable-device {
+            grid-template: 
+            "contact-content"
+            "map"
+            ".";
+        }
+
         animated-card {
             grid-area: animated-card;
+            @include screen.portable-device {
+                display: none;
+            }
         }
 
         .map {
